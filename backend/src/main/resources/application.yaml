@@ -1,0 +1,15 @@
+server:
+  port: ${PRODUCT_PORT:8081}
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://169.56.100.104:32350/demo?useUnicode=true&characterEncoding=utf-8
+    username: ${DB_USERNAME:user00}
+    password: ${DB_PASSWORD:admin1234}
+    hikari:
+      connection-timeout: 5000
+      validation-timeout: 1000
+      maximum-pool-size: 30
+      minimum-idle: 2
+      connection-test-query: SELECT 1  
