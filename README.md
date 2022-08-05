@@ -27,7 +27,7 @@
 5. 도커 이미지 확인
  - docker images
 6. 도커 이미지에 태그 주기
- - docker tag matching rmsdud2435/kb40-matching:lastest
+ - docker tag matching rmsdud2435/kb40-matching:latest
 7. 도커 이미지 확인
  - docker images
 8. 도커 로그인
