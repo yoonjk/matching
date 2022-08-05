@@ -31,7 +31,7 @@
 7. 도커 이미지 확인
  - docker images
 8. 도커 로그인
- - docker logig
+ - docker login
 9. 도커 허브에 이미지 푸쉬
  - docker push rmsdud2435/kb40-matching:latest
 
