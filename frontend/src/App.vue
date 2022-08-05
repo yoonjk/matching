@@ -3,6 +3,7 @@
   <MenuBar/>
   <div style="margin-top:50px;">
   <Main/>
+  <router-view></router-view>
   </div>
 </v-app>
 </template>
