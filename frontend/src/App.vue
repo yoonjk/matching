@@ -1,7 +1,7 @@
 <template>
 <v-app>
   <MenuBar/>
-  <div style="margin-top:30px;">
+  <div style="margin-top:50px;">
   <Main/>
   </div>
 </v-app>

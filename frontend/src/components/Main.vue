@@ -3,13 +3,13 @@
     
     <v-col>
       <v-row id="match">
-        <div style="width:40%"><img src="../assets/logo.png" /></div>
-        <div style="width:60%;text-align: center; font-size: 25px;">외모로 연결</div>
+        <div style="width:35%"><img src="../assets/logo.png" /></div>
+        <div style="width:65%;text-align: center; font-size: 30px;font-weight:bold">외모로 연결</div>
       </v-row>
     
       <v-row id="match">
-        <div style="width:60%;text-align: center; font-size: 25px;">마음으로 연결</div>
-        <div style="width:40%"><img src="../assets/logo.png"/></div>
+        <div style="width:65%;text-align: center; font-size: 30px;font-weight:bold">마음으로 연결</div>
+        <div style="width:35%"><img src="../assets/logo.png"/></div>
       </v-row>
 
       <v-row id="sub">
@@ -17,13 +17,13 @@
           <div class="d-flex mb-2" style="justify-content: center;">
           <img id="img2" src="../assets/logo.png"/><div id="chat-count">5</div>
           </div>
-          <div style="font-size:20px;">대화하기</div>
+          <div style="font-size:25px;font-weight:bold">대화하기</div>
         </v-col>
         <v-col id="service">
           <div class="d-flex mb-2" style="justify-content: center;">
           <img id="img2" src="../assets/logo.png"/>
           </div>
-          <div style="font-size:20px;">사후서비스</div>
+          <div style="font-size:25px;font-weight:bold">사후서비스</div>
         </v-col>
       </v-row>
     </v-col>
@@ -43,7 +43,7 @@ export default {
 #match{
   border-radius : 10px;
   border : 1px solid;
-  padding: 20px 20px 20px 20px;
+  padding: 13px;
   margin : 10px;
   display : flex;
   align-items:center
@@ -59,21 +59,25 @@ export default {
   border : 1px solid;
   margin-right: 10px;
   text-align: center;
+  padding-top:20px;
+  padding-bottom:20px;
 }
 #service{
   border-radius : 10px;
   border : 1px solid;
   text-align: center;
+  padding-top:20px;
+  padding-bottom:20px;
 }
 
 img{
-  width:100px;
-  height:100px;
+  width:90px;
+  height:90px;
 }
 
 #img2{
-  width:50px;
-  height:50px;
+  width:70px;
+  height:70px;
 }
 #chat-count{
   font-weight: bold;

@@ -42,6 +42,7 @@
         color="white"
         elevate-on-scroll
         flat
+        style="padding-top:10px;"
     >
       <v-container :class="{ 'px-0': !$vuetify.breakpoint.smAndUp }">
         <v-row
@@ -49,10 +50,17 @@
             align="center"
             justify="space-between"
         >
-          <v-col class="d-flex align-center">
+        <!-- <v-icon style="color:black;margin:10px;">mdi-keyboard-backspace</v-icon> -->
+        <div style="margin-left:15px;display: flex; align-items: center;">
+        <img style="width:40px;height:40px;border-radius:100%;border:1px solid; margin-right:10px;" src="../assets/logo.png"/>
+        <div>이재인 님</div>
+        </div>
+          <v-col class="d-flex align-center" style="justify-content: flex-end;">
+          <v-icon style="color:black">mdi-bell</v-icon>
             <v-app-bar-nav-icon
                 v-if="!$vuetify.breakpoint.mdAndUp"
                 @click.stop="drawer = !drawer"
+                style="color:black"
             />
             <v-toolbar-title
                 class="font-weight-bold text-h5 primary--text"
