@@ -33,7 +33,7 @@
 8. 도커 로그인
  - docker logig
 9. 도커 허브에 이미지 푸쉬
- - docker push rmsdud2435/kb40-matching:lastest
+ - docker push rmsdud2435/kb40-matching:latest
 
 
 ## Font-end
