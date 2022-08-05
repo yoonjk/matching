@@ -2,9 +2,11 @@
 <div>
     <h1>8강전 1라운드</h1>
     <h2>마음이 가는 사용자를 선택해주세요</h2>
-    <img src="../../assets/logo.png" v-on:click="selectUser" />
+    <img class = "userA" src="../../assets/logo.png" v-on:click="selectUser" />
     <h1>VS</h1>
-    <img src="../../assets/logo.png" v-on:click="selectUser" />
+    <img class = "userB" src="../../assets/logo.png" v-on:click="selectUser" />
+    <p></p>
+    <button type="button" @click="goNextPage">다음</button>
 </div>
 
 </template>
@@ -14,6 +16,9 @@ export default {
     methods: {
         selectUser() {
             console.log("haha")
+        },
+        goNextPage() {
+            this.$router.push("/faceFinal").catch(() => {});
         }
     }
 }
@@ -22,6 +27,15 @@ export default {
 
 <style scoped>
 img {
-    border: 5px solid rgb(215, 213, 71);
+    border: 5px solid #F8BB41;
 }
+
+.userA {
+    border-radius: 50%;
+}
+.userB {
+    border-radius: 50%;
+}
+
+
 </style>
