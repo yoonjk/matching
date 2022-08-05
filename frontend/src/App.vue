@@ -3,20 +3,18 @@
   <MenuBar/>
   <div style="margin-top:50px;">
   <Main/>
-  <router-view></router-view>
+  <!-- <router-view></router-view> -->
   </div>
 </v-app>
 </template>
 
 <script>
 import MenuBar from './components/MenuBar';
-import Main from './components/Main';
 
 export default {
   name: 'App',
 
   components: {
-    Main,
     MenuBar
   },
 
