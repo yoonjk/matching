@@ -2,6 +2,8 @@
 
 ## Back-end
 
+### Server 정보
+
 ### DB 정보
 
 - DB S/W: MySQL 8
@@ -9,3 +11,5 @@
 - Port: 30503
 - 사용계정: admin/passw0d
 - root password: passw0rd
+
+### Swagger 정보
