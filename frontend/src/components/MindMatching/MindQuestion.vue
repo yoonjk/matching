@@ -40,8 +40,6 @@ export default {
         return {
             a: 0,
             b: 1,
-            clicked1: "false",
-            clicked2: "false",
             questions: [
                 {
                     question: "question 1",
@@ -70,7 +68,7 @@ export default {
     methods: {
         goNextQuestion() {
             if(this.b >= 3) {
-                this.$router.push("/mindMatchingList").catch(() => {}); // FIXME: path change
+                this.$router.push("/mindMatchingList").catch(() => {});
             } else {
                 this.a++;
                 this.b++;
