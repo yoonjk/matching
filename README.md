@@ -1,5 +1,10 @@
 # matching
 
+## Server OS
+- IP: 169.56.100.99
+- Namespace: matching
+- Password: bootcamp0718@
+
 ## Back-end
 
 ### Server 정보
