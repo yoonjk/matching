@@ -3,9 +3,9 @@
 ## Back-end
 
 ### Server 정보
+ - URL: http://matching.169.56.100.104.nip.io/match
 
 ### DB 정보
-
 - DB S/W: MySQL 8
 - IP: user08.169.56.100.104.nip.io
 - Port: 30503
@@ -13,7 +13,7 @@
 - root password: passw0rd
 
 ### Swagger 정보
-
+ - URL: https://matching.169.56.100.104.nip.io/match/swagger-ui.html
 
 ### 도커 이미지 수동 생성 및 배포
 1. 도커 이미지 만들기
