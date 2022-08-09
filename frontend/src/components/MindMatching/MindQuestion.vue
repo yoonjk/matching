@@ -70,7 +70,7 @@ export default {
     methods: {
         goNextQuestion() {
             if(this.b >= 3) {
-                this.$router.push("/faceFinal").catch(() => {}); // FIXME: path change
+                this.$router.push("/mindMatchingList").catch(() => {}); // FIXME: path change
             } else {
                 this.a++;
                 this.b++;
