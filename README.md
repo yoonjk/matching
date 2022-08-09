@@ -3,6 +3,7 @@
 ## Server OS
 - IP: 169.56.100.99
 - Namespace: matching
+- User: matching
 - Password: bootcamp0718@
 
 ## Back-end
