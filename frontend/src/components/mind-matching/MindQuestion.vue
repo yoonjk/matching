@@ -1,23 +1,34 @@
 <template>
     <div>
-        <div id="steps">
-            <v-avatar id="step1" color="#FEBC0E" size="36">1</v-avatar>
-            <v-avatar id="step2" color="#FEBC0E" size="36">2</v-avatar>
-            <v-avatar id="step3" color="#FEBC0E" size="36">3</v-avatar>
-        </div>
 
-        <div>
+        <div class="quiz-main" v-for="(element, index) in questions.slice(a,b)" :key="index">
+            <div id="steps">
+                <v-avatar v-if="a >= 1" color="#DDDDDD" style="margin-right:10px;"> <v-icon dark> mdi-check </v-icon></v-avatar>
+                <v-avatar v-else id="step1" color="#FEBC0E" style="margin-right:10px;">1</v-avatar>
+
+                <v-avatar v-if="a >= 2" color="#DDDDDD" style="margin-right:10px;"> <v-icon dark> mdi-check </v-icon></v-avatar>
+                <v-avatar v-else id="step2" color="#FEBC0E" style="margin-right:10px;">2</v-avatar>
+
+                <v-avatar v-if="a >= 3" color="#DDDDDD" style="margin-right:10px;"> <v-icon dark> mdi-check </v-icon></v-avatar>
+                <v-avatar v-else id="step3" color="#FEBC0E" style="margin-right:10px;">3</v-avatar>
+            </div>
+
             <h1 id="guideText">매칭 전 몇 가지만 확인할게요!</h1>
-            <h1 id="questionText">질문 어쩌구 저쩌구</h1>
-        </div>
-
-        <div id="answers" style="padding-bottom: 50px;">
-            <v-btn id="answer1" color="#666666">비슷한 사람</v-btn>
-            <v-btn id="answer2" color="#F3F4F6">반대의 사람</v-btn>
+            
+            <div class="box-question">
+                <h1 id="questionText"> {{ element.question }}</h1>
+            </div>
+            <div id="box-answers" style="padding-bottom: 50px;">
+                <v-btn id="box-answer" v-for="(item, index) in element.suggestions" :key="index"> {{ item.suggestion }} </v-btn>
+                <!-- <ul>
+                    <li v-for="(item, index) in element.suggestions" :key="index">{{ item.suggestion }} ></li>
+                </ul> -->
+                
+            </div>
         </div>
         
         <div style="text-align: center;"> 
-            <v-btn id="nextBtn" @click="goNextPage" color="#FEBC0E" rounded >다음</v-btn>
+            <v-btn block id="nextBtn" @click="goNextQuestion" color="#FEBC0E" rounded >다음</v-btn>
         </div>
         
     </div>
@@ -25,7 +36,47 @@
 
 <script>
 export default {
-    
+    data() {
+        return {
+            a: 0,
+            b: 1,
+            clicked1: "false",
+            clicked2: "false",
+            questions: [
+                {
+                    question: "question 1",
+                    suggestions: [
+                        { suggestion: "a1"},
+                        { suggestion: "b1"}
+                    ]
+                },
+                {
+                    question: "question 2",
+                    suggestions: [
+                        { suggestion: "a2"},
+                        { suggestion: "b2"}
+                    ]
+                },
+                {
+                    question: "question 3",
+                    suggestions: [
+                        { suggestion: "a3"},
+                        { suggestion: "b3"}
+                    ]
+                },
+            ]
+        }
+    },
+    methods: {
+        goNextQuestion() {
+            if(this.b >= 3) {
+                this.$router.push("/faceFinal").catch(() => {}); // FIXME: path change
+            } else {
+                this.a++;
+                this.b++;
+            }
+        }
+    }
 }
 </script>
 
@@ -36,16 +87,6 @@ export default {
     padding-bottom:50px;
     font-size: 16px;
     color: white;
-}
-
-#step1{
-    margin-right:20px;
-}
-#step2{
-    margin-right:20px;
-}
-#step3{
-    margin-right:20px;
 }
 
 #guideText{
@@ -60,21 +101,23 @@ export default {
     padding-bottom:50px;
 }
 
-#answers{
+#box-answers {
     text-align: center;
-    border: 1px;
-    border-color:#DDDDDD
 }
 
-#answer1{
+#box-answer {
     width:160px;
     height:180px;
-    color: #FFFFFF
+    list-style: none;
+    line-height: 2;
+    border: 1px solid #cdd2d2;
+    margin-bottom: 20px;
+    border-radius: 15px;
+    cursor: pointer;
 }
 
-#answer2{
-    width:160px;
-    height:180px;
-    color: #000000
+#box-answer:hover{
+    background-color: #e7eae0;
 }
+
 </style>
