@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import { useRequestListStore } from "../../../store/states/requestList";
+// import { useRequestListStore } from "../../../store/states/requestList";
 import RequestListItemStatus from "./RequestListItemStatus.vue";
 import RequestListItemDetail from "./RequestListItemDetail.vue";
 

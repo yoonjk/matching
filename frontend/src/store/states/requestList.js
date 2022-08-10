@@ -1,8 +1,8 @@
-// import { defineStore } from "pinia";
+import { defineStore } from "pinia";
 
-// export const useRequestListStore = defineStore("requestList", {
-//   state: () => ({
-//     selectedTab: 0,
-//     selectedItem: -1,
-//   }),
-// });
+export const useRequestListStore = defineStore("requestList", {
+  state: () => ({
+    selectedTab: 0,
+    selectedItem: -1,
+  }),
+});
