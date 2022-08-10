@@ -1,8 +1,8 @@
-package com.matching.kb40.backend.service;
+package com.matching.kb40.backend.dao;
 
 import com.matching.kb40.backend.model.User;
 
-public interface UserService {
+public interface UserDao {
 
     public User userTest();
 }

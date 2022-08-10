@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.matching.kb40.backend.dto.UserDto;
 import com.matching.kb40.backend.model.User;
-import com.matching.kb40.backend.service.UserService;
+import com.matching.kb40.backend.service.UserServiceImpl;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class UserController {
 	
 	@Autowired
-	private UserService userService;
+	private UserServiceImpl userService;
 
 	/**
 	 * 다른 Restful 어노테이션들

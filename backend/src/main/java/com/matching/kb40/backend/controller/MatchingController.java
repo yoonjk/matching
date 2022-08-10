@@ -1,5 +1,6 @@
 package com.matching.kb40.backend.controller;
 
+import com.matching.kb40.backend.service.MatchingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -7,7 +8,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.matching.kb40.backend.dto.MatchingDto;
 import com.matching.kb40.backend.model.Matching;
-import com.matching.kb40.backend.service.MatchingService;
 
 import lombok.extern.slf4j.Slf4j;
 

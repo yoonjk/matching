@@ -1,4 +1,4 @@
-package com.matching.kb40.backend.repository;
+package com.matching.kb40.backend.dao;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.slf4j.Logger;
@@ -9,18 +9,17 @@ import org.springframework.stereotype.Repository;
 import com.matching.kb40.backend.model.User;
 
 @Repository
-public class UserRepository {
-    private static final Logger logger = LoggerFactory.getLogger(UserRepository.class);
+public class UserDaoImpl implements UserDao{
 
     @Autowired
-	SqlSessionTemplate userSqlSessionTemplate;
+	SqlSessionTemplate SqlSessionTemplate;
 
     public User userTest() {
-		int sampleData = userSqlSessionTemplate.selectOne("user.userTest");
+		int sampleData = SqlSessionTemplate.selectOne("user.userTest");
 		User user = new User();
 		user.setSampleData(sampleData);
 		
-		logger.debug("User >>>>>>>" + user.toString());
+//		logger.debug("User >>>>>>>" + user.toString());
 
 		return user;
 	}
