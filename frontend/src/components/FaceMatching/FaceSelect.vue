@@ -32,14 +32,14 @@ export default {
             isTop : false,
             isBottom : false,
             users : [
-                {profile : "jaein1.png", idx : 0},
-                {profile : "jaein2.png", idx : 1},
-                {profile : "jaein3.png", idx : 2},
-                {profile : "jaein4.png", idx : 3},
-                {profile : "jaein5.png", idx : 4},
-                {profile : "jaein6.png", idx : 5},
-                {profile : "jaein7.png", idx : 6},
-                {profile : "jaein8.png", idx : 7}
+                {userId:"id0", profile : "jaein1.png", idx : 0},
+                {userId:"id1", profile : "jaein2.png", idx : 1},
+                {userId:"id2", profile : "jaein3.png", idx : 2},
+                {userId:"id3", profile : "jaein4.png", idx : 3},
+                {userId:"id4", profile : "jaein5.png", idx : 4},
+                {userId:"id5", profile : "jaein6.png", idx : 5},
+                {userId:"id6", profile : "jaein7.png", idx : 6},
+                {userId:"id7", profile : "jaein8.png", idx : 7}
             ],
             save : [0,1,2,3,4,5,6,7]
         }
@@ -88,7 +88,9 @@ export default {
             }
 
             if(this.stage == 1){ // 상세 페이지로
-                this.$router.push("/faceFinal").catch(() => {});
+                let userId = this.users[this.save[0]].userId
+                console.log(userId)
+                this.$router.push(`/faceFinal/${userId}`);
             }
             
         },
