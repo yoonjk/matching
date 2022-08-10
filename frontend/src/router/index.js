@@ -5,6 +5,8 @@ import Main from '../components/Main'
 import FaceSelect from '../components/FaceMatching/FaceSelect'
 import FaceFinal from '../components/FaceMatching/FaceFinal'
 import MindQuestion from '../components/MindMatching/MindQuestion'
+import MindMatchingList from '../components/MindMatching/MindMatchingList'
+import PreferenceQuestion from '../components/Preference/PreferenceQuestion'
 
 Vue.use(VueRouter);
 
@@ -29,6 +31,17 @@ export default new VueRouter({
             path: "/mindQuestion",
             name: "MindQuestion",
             component: MindQuestion
+        },
+        {
+            path: "/mindMatchingList",
+            name: "MindMatchingList",
+            component: MindMatchingList
+        },
+        {
+            path: "/preferenceQuestion",
+            name: "PreferenceQuestion",
+            component: PreferenceQuestion
         }
+
     ]
 })

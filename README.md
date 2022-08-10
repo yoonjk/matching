@@ -1,5 +1,16 @@
 # matching
 
+## Server OS
+- IP: 169.56.100.99
+- Namespace: matching
+- User: matching
+- Password: bootcamp0718@
+
+## Jenkins 정보
+- Webhook URL: http://169.56.100.99:8080/project/matching
+- Token: 003fdaa60ee585c3026a184683321c65
+- Pipeline name: matching
+
 ## Back-end
 
 ### Server 정보
@@ -9,7 +20,8 @@
 - DB S/W: MySQL 8
 - IP: user08.169.56.100.104.nip.io
 - Port: 30503
-- 사용계정: admin/passw0d
+- Schema: matching
+- 사용계정: admin/passw0rd
 - root password: passw0rd
 
 ### Swagger 정보
