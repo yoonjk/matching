@@ -6,17 +6,17 @@
                 <strong style="color: white;"> {{ percentage }}%</strong>
             </v-progress-linear>
                 
-            <div class="box-question">
+            <div class="box-question" style="margin: 20px">
                 <h1 id="questionText"> {{ element.question }}</h1>
             </div>
             <div id="box-answers" style="padding-bottom: 50px;">
-                <v-btn id="box-answer" v-for="(item, index) in element.suggestions" :key="index"> {{ item.suggestion }} </v-btn>
-                
+                <v-btn id="box-answer" v-on:click="selectLeftAnswer" v-bind:color="clickedLeft ? '#666666' : '#F3F4F6'" > {{ element.suggestions[0].suggestion }} </v-btn>
+                <v-btn id="box-answer" v-on:click="selectRightAnswer" v-bind:color="clickedRight ? '#666666' : '#F3F4F6'" > {{ element.suggestions[1].suggestion }} </v-btn>                
             </div>
         </div>
 
         <div style="text-align: center;"> 
-            <v-btn block id="nextBtn" @click="goNextQuestion" color="#FEBC0E" rounded >다음</v-btn>
+            <v-btn block id="nextBtn" @click="goNextQuestion" color="#FEBC0E" rounded style="height: 50px">다음</v-btn>
         </div>
     </div>
 
@@ -29,12 +29,14 @@ export default {
             a: 0,
             b: 1,
             initial: 0,
+            clickedLeft: false,
+            clickedRight: false,
             questions: [
                 {
-                    question: "question 1",
+                    question: "당신은 당신의 반려동물과 모르는 사람 중 하나만 살릴 수 있다. 당신은 누구를 살릴 것인가? ",
                     suggestions: [
-                        { suggestion: "a1"},
-                        { suggestion: "b1"}
+                        { suggestion: "반려동물"},
+                        { suggestion: "모르는 사람"}
                     ]
                 },
                 {
@@ -55,7 +57,21 @@ export default {
         }
     },
     methods: {
+        selectLeftAnswer() {
+            this.clickedLeft = !this.clickedLeft
+            if(this.clickedRight) {
+                this.clickedRight = !this.clickedRight
+            }
+        },
+        selectRightAnswer() {
+            this.clickedRight = !this.clickedRight
+            if(this.clickedLeft) {
+                this.clickedLeft = !this.clickedLeft
+            }
+        },
         goNextQuestion() {
+            this.clickedLeft = false
+            this.clickedRight = false
             if(this.b >= this.questions.length) {
                 this.$router.push("/faceFinal").catch(() => {}); // FIXME: path change
             } else {
@@ -66,7 +82,6 @@ export default {
     },
     computed: {
         percentage: function () {
-            console.log(this.b)
             return parseInt(this.a / this.questions.length * 100);
         }
     }
@@ -76,19 +91,14 @@ export default {
 <style scoped>
 
 #progressBar {
-    margin-top: 30px;
-}
-
-#guideText{
-    text-align: center;
-    font-weight: normal;
-    font-size: 20px;
-    padding-bottom:50px;
+    margin-top: 80px;
 }
 
 #questionText{
     text-align: center;
+    margin-top: 50px;
     padding-bottom:50px;
+    font-size: 24px;
 }
 
 #box-answers {
@@ -96,17 +106,17 @@ export default {
 }
 
 #box-answer {
-    width:160px;
-    height:180px;
+    width:180px;
+    height:200px;
     list-style: none;
     line-height: 2;
-    border: 1px solid #cdd2d2;
-    margin-bottom: 20px;
+    border: 1px solid #DDDDDD;
     border-radius: 15px;
     cursor: pointer;
 }
 
-#box-answer:hover{
-    background-color: #e7eae0;
+#nextBtn {
+    margin-top: 50px;
 }
+
 </style>
