@@ -19,11 +19,8 @@
                 <h1 id="questionText"> {{ element.question }}</h1>
             </div>
             <div id="box-answers" style="padding-bottom: 50px;">
-                <v-btn id="box-answer" v-for="(item, index) in element.suggestions" :key="index"> {{ item.suggestion }} </v-btn>
-                <!-- <ul>
-                    <li v-for="(item, index) in element.suggestions" :key="index">{{ item.suggestion }} ></li>
-                </ul> -->
-                
+                <v-btn id="box-answer" v-on:click="selectLeftAnswer" v-bind:color="clickedLeft ? '#666666' : '#F3F4F6'" > {{ element.suggestions[0].suggestion }} </v-btn>
+                <v-btn id="box-answer" v-on:click="selectRightAnswer" v-bind:color="clickedRight ? '#666666' : '#F3F4F6'" > {{ element.suggestions[1].suggestion }} </v-btn>
             </div>
         </div>
         
@@ -40,8 +37,8 @@ export default {
         return {
             a: 0,
             b: 1,
-            clicked1: "false",
-            clicked2: "false",
+            clickedLeft: false,
+            clickedRight: false,
             questions: [
                 {
                     question: "question 1",
@@ -68,9 +65,24 @@ export default {
         }
     },
     methods: {
+        selectLeftAnswer() {
+            this.clickedLeft = !this.clickedLeft
+            if(this.clickedRight) {
+                this.clickedRight = !this.clickedRight
+            }
+        },
+        selectRightAnswer() {
+            this.clickedRight = !this.clickedRight
+            if(this.clickedLeft) {
+                this.clickedLeft = !this.clickedLeft
+            }
+        },
+
         goNextQuestion() {
+            this.clickedLeft = false
+            this.clickedRight = false
             if(this.b >= 3) {
-                this.$router.push("/faceFinal").catch(() => {}); // FIXME: path change
+                this.$router.push("/mindMatchingList").catch(() => {});
             } else {
                 this.a++;
                 this.b++;
@@ -110,14 +122,9 @@ export default {
     height:180px;
     list-style: none;
     line-height: 2;
-    border: 1px solid #cdd2d2;
+    border: 1px solid #DDDDDD;
     margin-bottom: 20px;
     border-radius: 15px;
-    cursor: pointer;
-}
-
-#box-answer:hover{
-    background-color: #e7eae0;
 }
 
 </style>
