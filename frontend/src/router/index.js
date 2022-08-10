@@ -6,6 +6,7 @@ import FaceSelect from '../components/FaceMatching/FaceSelect'
 import FaceFinal from '../components/FaceMatching/FaceFinal'
 import MindQuestion from '../components/MindMatching/MindQuestion'
 import PreferenceQuestion from '../components/Preference/PreferenceQuestion'
+import MyDataAgree from '../components/IntroAgree/MyDataAgree'
 
 Vue.use(VueRouter);
 
@@ -35,6 +36,11 @@ export default new VueRouter({
             path: "/preferenceQuestion",
             name: "PreferenceQuestion",
             component: PreferenceQuestion
+        },
+        {
+            path: "/myDataAgree",
+            name: "MyDataAgree",
+            component: MyDataAgree
         }
 
     ]
