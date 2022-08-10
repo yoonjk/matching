@@ -2,10 +2,66 @@
 
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="user">
-    <select id="userTest" resultType="int">
-        SELECT
-         1
-        FROM
-         DUAL
+
+    <select id="selectByUserId" resultType="com.matching.kb40.backend.dto.UserDto">
+        SELECT *
+          FROM matching.tb_user u
+         WHERE u.user_id = #{userId}
     </select>
+
+    <select id="selectAll" resultType="com.matching.kb40.backend.dto.UserDto">
+        SELECT *
+        FROM matching.tb_user u
+    </select>
+
+    <update id="updateByUserId" parameterType="com.matching.kb40.backend.dto.UserDto">
+        UPDATE tb_user
+           SET job = #{job}
+             , mbti_mind = #{mbtiMind}
+             , mbti_recog = #{mbtiRecog}
+             , mbti_judge = #{mbtiJudge}
+             , mbti_tactics = #{mbtiTactics}
+             , profile_oriname = #{profileOriname}
+             , profile_filename = #{profileFilename}
+             , profile_url = #{profileUrl}
+             , user_point = #{userPoint}
+             , pet_prefer = #{petPrefer}
+             , nickname = #{nickname}
+             , agree_flag = #{agreeFlag}
+             , hobby = #{hobby}
+         WHERE user_id = #{userId}
+    </update>
+
+    <delete id="deleteByUserId">
+        DELETE FROM tb_user
+         WHERE user_id = #{userId}
+    </delete>
+
+<!--    <select id="selectUserData" resultType="com.matching.kb40.backend.model.UserData">-->
+<!--        SELECT u.user_id-->
+<!--             , u.mydata_id-->
+<!--             , u.job-->
+<!--             , u.mbti_mind-->
+<!--             , u.mbti_recog-->
+<!--             , u.mbti_judge-->
+<!--             , u.mbti_tactics-->
+<!--             , u.profile_oriname-->
+<!--             , u.profile_filename-->
+<!--             , u.profile_url-->
+<!--             , u.user_point-->
+<!--             , u.pet_prefer-->
+<!--             , u.nickname-->
+<!--             , u.agree_flag-->
+<!--             , u.hobby-->
+<!--             , m.name-->
+<!--             , m.gender-->
+<!--             , m.age-->
+<!--             , m.address-->
+<!--             , m.assets-->
+<!--             , m.consume_ptn1-->
+<!--             , m.consume_ptn2-->
+<!--             , m.consume_ptn3-->
+<!--             , m.invest_prop-->
+<!--          FROM matching.tb_user u LEFT JOIN matching.tb_mydata m ON u.mydata_id = m.mydata_id-->
+<!--    </select>-->
 </mapper>
