@@ -1,12 +1,10 @@
 package com.matching.kb40.backend.service;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import com.matching.kb40.backend.dao.UserDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.matching.kb40.backend.model.User;
-import com.matching.kb40.backend.dao.UserDaoImpl;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -15,15 +13,15 @@ import lombok.extern.slf4j.Slf4j;
 public class UserServiceImpl implements UserService{
 
     @Autowired
-	private UserDaoImpl userRepository;
+	private UserDao userDao;
 
     /**
 	 * 유저 샘플
 	 * @param 
 	 * @result User
 	 */
-    public User userTest() {
+    public User userTest() throws Exception{
         User user = new User();
-		return userRepository.userTest();
+		return userDao.userTest();
 	}
 }

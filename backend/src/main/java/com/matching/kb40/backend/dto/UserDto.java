@@ -10,5 +10,18 @@ import lombok.ToString;
 @Setter
 @ToString
 public class UserDto {
-    private int sampleData;     
+    private String userId;
+    private String mydataId;
+    private String job;
+    private String mbtiMind;
+    private String mbtiRecog;
+    private String mbtiJudge;
+    private String mbtiTactics;
+    private String profileOriname;
+    private String profileFilename;
+    private String profileUrl;
+    private Integer userPoint;
+    private String petPrefer;
+    private String nickname;
+    private String agreeFlag;
 }

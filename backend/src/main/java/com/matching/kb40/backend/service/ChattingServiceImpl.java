@@ -14,10 +14,6 @@ public class ChattingServiceImpl implements ChattingService{
     @Autowired
 	private ChattingDao chattingDao;
 
-	public ChattingServiceImpl(ChattingDao chattingDao) {
-		this.chattingDao = chattingDao;
-	}
-
 	@Override
 	public Chatting chattingTest(){
 		return chattingDao.chattingTest();
