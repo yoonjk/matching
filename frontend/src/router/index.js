@@ -8,6 +8,7 @@ import MindQuestion from '../components/MindMatching/MindQuestion'
 import MatchDetail from '../components/MindMatching/MatchDetail'
 import MindMatchingList from '../components/MindMatching/MindMatchingList'
 import PreferenceQuestion from '../components/Preference/PreferenceQuestion'
+import MyDataAgree from '../components/IntroAgree/MyDataAgree'
 
 Vue.use(VueRouter);
 
@@ -47,6 +48,11 @@ export default new VueRouter({
             path: "/preferenceQuestion",
             name: "PreferenceQuestion",
             component: PreferenceQuestion
+        },
+        {
+            path: "/myDataAgree",
+            name: "MyDataAgree",
+            component: MyDataAgree
         }
 
     ]
