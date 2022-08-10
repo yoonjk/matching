@@ -5,8 +5,10 @@ import Main from '../components/Main'
 import FaceSelect from '../components/FaceMatching/FaceSelect'
 import FaceFinal from '../components/FaceMatching/FaceFinal'
 import MindQuestion from '../components/MindMatching/MindQuestion'
+import MatchDetail from '../components/MindMatching/MatchDetail'
 import MindMatchingList from '../components/MindMatching/MindMatchingList'
 import PreferenceQuestion from '../components/Preference/PreferenceQuestion'
+import MyDataAgree from '../components/IntroAgree/MyDataAgree'
 
 Vue.use(VueRouter);
 
@@ -23,7 +25,7 @@ export default new VueRouter({
             component: FaceSelect
         },
         {
-            path: "/faceFinal",
+            path: "/faceFinal/:userId",
             name: "FaceFinal", 
             component: FaceFinal
         },
@@ -31,6 +33,11 @@ export default new VueRouter({
             path: "/mindQuestion",
             name: "MindQuestion",
             component: MindQuestion
+        },
+        {
+            path: "/matchDetail/:userId",
+            name: "MatchDetail",
+            component: MatchDetail
         },
         {
             path: "/mindMatchingList",
@@ -41,6 +48,11 @@ export default new VueRouter({
             path: "/preferenceQuestion",
             name: "PreferenceQuestion",
             component: PreferenceQuestion
+        },
+        {
+            path: "/myDataAgree",
+            name: "MyDataAgree",
+            component: MyDataAgree
         }
 
     ]

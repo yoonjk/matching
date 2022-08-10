@@ -10,7 +10,7 @@
                 <div style="font-size:15px;"><v-icon small style="color:black;">mdi-map-marker</v-icon>{{user.addr}}</div>
                 </div>
                 <div id="chat" @click="goChat">
-                        <v-icon large style="color:white">mdi-chat-outline</v-icon>
+                    <v-icon large style="color:white">mdi-chat-outline</v-icon>
                 </div>
             </div>
         </div>
@@ -28,12 +28,13 @@
 export default {
     data(){
         return{
-            user: {name:"이재인", age:20, addr:"서울시 여의도"}
+            userId : this.$route.params.userId,
+            user : {name:"이재인", age:20, addr:"서울시 여의도"}
         }
     },
     methods: {
         displayDetail() {
-            console.log("displayDetail")
+            this.$router.push(`/matchDetail/${this.userId}`);
         },
         reMatching() {
             this.$router.push("/faceSelect").catch(() => {});
@@ -51,7 +52,6 @@ button {
     /* background:rgb(248, 212, 89); */
     background: #8452f7;
     width:40%;
-    
     font-size:15px;
 }
 
