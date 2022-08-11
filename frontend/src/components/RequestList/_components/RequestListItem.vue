@@ -38,7 +38,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@use '../../../styles/constants/colors.scss';
+/* @use '../../../styles/constants/colors.scss'; */
 
 li {
   position: relative;

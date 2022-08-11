@@ -1,5 +1,5 @@
 import axios from "axios";
-import { chatDataDummy, receiverDummy } from "./dummy";
+import { chatDataDummy, receiverDummy, userDummy } from "./dummy";
 
 export { axios };
 

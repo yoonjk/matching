@@ -1,6 +1,6 @@
 <template>
   <div class="date-divider-wrapper">
-    <div class="date-divider-decortaion"></div>
+    <div class="date-divider-decoration"></div>
     <p>{{ `${this.year}년 ${this.month}월 ${this.day}일` }}</p>
   </div>
 </template>
@@ -32,27 +32,31 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .date-divider-wrapper {
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
   width: 100%;
   height: 15px;
+  margin: 20px auto;
 }
 
 .date-divider-decoration {
   width: 100%;
   height: 1px;
-  background-color: #ddd;
+  background-color: colors.$GRAY7;
   position: absolute;
   z-index: 50;
 }
 
 p {
-  width: 100%;
-  margin: 15px 10px;
-  color: #ddd;
+  width: 130px;
+  margin: 20px;
+  text-align: center;
+  color: colors.$GRAY7;
+  background-color: colors.$GRAY2;
   font-size: 12px;
   position: absolute;
   z-index: 51;

@@ -9,6 +9,10 @@ module.exports = {
         test: /\.scss$/i,
         use: ["sass-loader"],
       },
+      {
+        test: /\.svg$/,
+        use: ["babel-loader", "vue-svg-loader"],
+      },
     ],
   },
 };

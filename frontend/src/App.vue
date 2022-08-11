@@ -4,14 +4,16 @@
     <GNB />
     <!-- <img alt="Vue logo" src="./assets/logo.png" /> -->
     <!-- <HelloWorld msg="Welcome to Your Vue.js App" /> -->
-    <RequestList isIn />
+    <!-- <RequestList isIn /> -->
+    <ChatRoom />
     <Test />
   </div>
 </template>
 
 <script>
 // import HelloWorld from "./components/HelloWorld.vue";
-import RequestList from "./components/RequestList";
+// import RequestList from "./components/RequestList";
+import ChatRoom from "./components/ChatRoom";
 import StatusBar from "./components/_common/StatusBar.vue";
 import GNB from "./components/_common/GNB.vue";
 
@@ -19,7 +21,8 @@ export default {
   name: "App",
   components: {
     // HelloWorld,
-    RequestList,
+    // RequestList,
+    ChatRoom,
     StatusBar,
     GNB,
   },
@@ -27,17 +30,11 @@ export default {
 </script>
 
 <style lang="scss">
-@import "./styles/index.scss";
-/* #app { */
-/* font-family: Avenir, Helvetica, Arial, sans-serif; */
-/* -webkit-font-smoothing: antialiased; */
-/* -moz-osx-font-smoothing: grayscale; */
-/* text-align: center; */
-/* color: #2c3e50; */
-/* margin-top: 60px; */
-/* } */
+/* @use "@/styles/constants/colors.scss"; */
+/* @import "./styles/index.scss"; */
 
 #app {
-  background-color: #f1f3f5;
+  font-family: "S-CoreDream-5Medium";
+  background-color: colors.$GRAY2;
 }
 </style>

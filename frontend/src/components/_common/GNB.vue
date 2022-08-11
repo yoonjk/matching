@@ -8,9 +8,16 @@ export default {
 };
 </script>
 
-<style scoped>
-nav {
+<style lang="scss" scoped>
+/* @use '@/styles/constants/colors.scss'; */
+/* @import "@/styles/index.scss"; */
+
+* {
+  font-family: 'Spoqa Han Sans Neo', 'sans-serif';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: colors.$GRAY9;
   height: 30px;
-  background-color: #ddd;
+  background-color: colors.$GRAY3;
 }
 </style>

@@ -1,5 +1,5 @@
 <template>
-  <div class="status" :style="cssVariable">{{ this.title }}</div>
+  <div class="status" :style="cssVariables">{{ this.title }}</div>
 </template>
 
 <script>
@@ -30,7 +30,7 @@ export default {
         rejected: "#DEE2E6",
       }[this.type];
     },
-    cssVariable: function () {
+    cssVariables: function () {
       return {
         backgroundColor: this.backgroundColor,
         titleColor: this.titleColor,
@@ -39,7 +39,7 @@ export default {
   },
 
   created() {
-    console.log(this.cssVariable);
+    console.log(this.cssVariables);
   },
 };
 </script>

@@ -1,43 +1,43 @@
 export const chatDataDummy = [
   {
-    id: 0,
+    messageId: 0,
     userId: "123",
-    message: "안녕하세요.",
+    content: "안녕하세요.",
     date: "20220808",
     time: "12:30",
   },
   {
-    id: 1,
+    messageId: 1,
     userId: "345",
-    message: "반가워요.",
+    content: "반가워요.",
     date: "20220808",
     time: "12:35",
   },
   {
-    id: 2,
+    messageId: 2,
     userId: "123",
-    message: "...",
+    content: "...",
     date: "20220808",
     time: "12:30",
   },
   {
-    id: 3,
+    messageId: 3,
     userId: "345",
-    message: ".....",
+    content: ".....",
     date: "20220808",
     time: "12:30",
   },
   {
-    id: 4,
+    messageId: 4,
     userId: "123",
-    message: "...",
+    content: "...",
     date: "20220808",
     time: "12:30",
   },
   {
-    id: 5,
+    messageId: 5,
     userId: "345",
-    message: ".....",
+    content: ".....",
     date: "20220808",
     time: "12:30",
   },
@@ -45,10 +45,12 @@ export const chatDataDummy = [
 
 export const receiverDummy = {
   userId: "123",
-  username: "위대한재규어",
+  nickname: "위대한재규어",
+  address: "인천시 송도동",
 };
 
 export const userDummy = {
   userId: "345",
-  username: "아이유",
+  nickname: "아이유",
+  address: "서울시 서초동",
 };
