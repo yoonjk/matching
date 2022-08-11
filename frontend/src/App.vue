@@ -1,10 +1,10 @@
 <template>
-  <v-app>
-    <MenuBar />
-    <div style="margin-top: 50px; padding-top: 20px">
-      <router-view></router-view>
-    </div>
-  </v-app>
+<v-app>
+  <MenuBar/>
+  <div style="margin-top:50px; padding-top:20px;  height: calc(100% - 73px);">
+  <router-view></router-view>
+  </div>
+</v-app>
 </template>
 
 <script>
