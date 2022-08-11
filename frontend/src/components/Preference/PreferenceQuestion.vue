@@ -40,19 +40,33 @@ export default {
                     ]
                 },
                 {
-                    question: "question 2",
+                    question: "당신은 외향형 입니까? 내향형 입니까?",
                     suggestions: [
-                        { suggestion: "a2"},
-                        { suggestion: "b2"}
+                        { suggestion: "외향형"},
+                        { suggestion: "내향형"}
                     ]
                 },
                 {
-                    question: "question 3",
+                    question: "당신은 외향형 입니까? 내향형 입니까?",
                     suggestions: [
-                        { suggestion: "a3"},
-                        { suggestion: "b3"}
+                        { suggestion: "외향형"},
+                        { suggestion: "내향형"}
                     ]
                 },
+                {
+                    question: "당신은 외향형 입니까? 내향형 입니까?",
+                    suggestions: [
+                        { suggestion: "외향형"},
+                        { suggestion: "내향형"}
+                    ]
+                },
+                {
+                    question: "당신은 외향형 입니까? 내향형 입니까?",
+                    suggestions: [
+                        { suggestion: "외향형"},
+                        { suggestion: "내향형"}
+                    ]
+                }
             ]
         }
     },
