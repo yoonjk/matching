@@ -37,11 +37,7 @@ export default {
       };
     },
   },
-  created() {
-    console.log(this.onLeft);
-    console.log(this.cssVariables);
-    console.log(colors);
-  },
+  created() {},
 };
 </script>
 
@@ -51,9 +47,8 @@ export default {
   padding: auto 0;
   align-content: center;
   justify-content: center;
-  /* min-height: 30px; */
   width: 50vw;
-  border-radius: 10px;
+  border-radius: 20px;
   background-color: var(backgroundColor);
   margin-right: var(marginRight);
   margin-left: var(marginLeft);
@@ -63,7 +58,7 @@ export default {
 }
 
 .message-content {
-  width: 90%;
+  width: 85%;
   height: 100%;
   line-height: 100%;
   margin: 10px 0;

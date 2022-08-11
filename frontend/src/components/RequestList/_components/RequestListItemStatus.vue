@@ -38,9 +38,7 @@ export default {
     },
   },
 
-  created() {
-    console.log(this.cssVariables);
-  },
+  created() {},
 };
 </script>
 

@@ -12,6 +12,7 @@ const kafka = new Kafka({
   logLevel: logLevel.DEBUG,
   clientId: `${CLINET_ID_BASE}-${USER_ID}_${MATCH_ID}`,
   brokers: ["169.56.100.104:30011"],
+  ssl: false,
 });
 
 export const produceKafkaChat = async (
@@ -19,11 +20,10 @@ export const produceKafkaChat = async (
 ) => {
   const producer = kafka.producer();
 
-  console.log(producer);
-
   await producer.connect();
 
   await producer.send({
+
     topic,
     compression: CompressionTypes.GZIP,
     messages: [

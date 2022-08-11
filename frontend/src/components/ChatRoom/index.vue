@@ -28,6 +28,9 @@
 
 <script>
 import { prevData, user, receiver } from "./_worker/api";
+import { useUserStore } from "@/store/states/userState";
+import { loadUser } from "@/worker/user";
+
 import ChatRoomMyProfile from "./_components/ChatRoomMyProfile.vue";
 import ChatRoomDateDivider from "./_components/ChatRoomDateDivider.vue";
 import ChatRoomMessageBox from "./_components/ChatRoomMessageBox.vue";
@@ -41,6 +44,10 @@ import ChatRoomMessageInput from "./_components/ChatRoomMessageInput.vue";
 
 export default {
   name: "ChatRoom",
+  setup() {
+    const store = useUserStore();
+    return { store };
+  },
   data() {
     return {
       dummyTurn: 0,
@@ -59,7 +66,6 @@ export default {
   methods: {
     setDummyInterval() {
       setInterval(() => {
-        console.log(this.dummyId);
         this.dummyId += 1;
       });
     },
@@ -73,7 +79,9 @@ export default {
       });
     },
   },
-  created() {},
+  async mounted() {
+    await loadUser('user1');
+  },
 };
 </script>
 

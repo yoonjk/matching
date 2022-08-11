@@ -17,6 +17,7 @@ import ChatRoom from "./components/ChatRoom";
 import StatusBar from "./components/_common/StatusBar.vue";
 import GNB from "./components/_common/GNB.vue";
 
+
 export default {
   name: "App",
   components: {
