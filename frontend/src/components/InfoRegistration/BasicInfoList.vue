@@ -70,7 +70,7 @@ export default {
         },
         goNext(){
             this.$axios
-                .get(`http://matching.169.56.100.104.nip.io/match/user/user1`)
+                .get(`/user/user1`)
                 .then((response) => {
                     console.log(response.data)
                 })
