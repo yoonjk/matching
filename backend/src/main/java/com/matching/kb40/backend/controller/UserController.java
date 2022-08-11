@@ -1,5 +1,6 @@
 package com.matching.kb40.backend.controller;
 
+import com.matching.kb40.backend.dto.MydataDto;
 import com.matching.kb40.backend.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -48,4 +49,11 @@ public class UserController {
 		userService.remove(userId);
 	}
 
+	// ------------------- MYDATA 관련
+	@GetMapping("/mydata/{userId}")
+	public MydataDto findMydata(@PathVariable String userId) throws Exception {
+		MydataDto mydata = userService.findMydata(userId);
+
+		return mydata;
+	}
 }

@@ -1,5 +1,6 @@
 package com.matching.kb40.backend.dao;
 
+import com.matching.kb40.backend.dto.MydataDto;
 import com.matching.kb40.backend.dto.UserDto;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,5 +36,11 @@ public class UserDaoImpl implements UserDao{
 	public void delete(String userId) throws SQLException {
 		SqlSessionTemplate.delete(ns.concat("deleteByUserId"), userId);
 	}
+
+	@Override
+	public MydataDto retrieveMydata(String userId) throws SQLException {
+		return SqlSessionTemplate.selectOne(ns.concat("selectMydataByUserId"), userId);
+	}
+
 
 }
