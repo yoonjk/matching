@@ -29,4 +29,22 @@ mybatis:
     default-fetch-size: 100
     default-statement-timeout: 30    
 
+kafka:
+  total:
+    topic: all
+
+
+## Old Version
+#kafka:
+#  bootstap-servers: localhost:9002
+#  username: username
+#  password: qwer!@#
+#  enable:
+#    auto:
+#      commit: false
+#  ackmode: MANUAL
+#  offset:
+#    reset: latest
+#  concurrency: 3
+
 #Parameter
