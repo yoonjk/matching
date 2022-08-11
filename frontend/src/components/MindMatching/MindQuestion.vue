@@ -124,6 +124,8 @@ export default {
     height:180px;
     list-style: none;
     line-height: 2;
+    margin-left: 10px;
+    margin-right: 10px;
     border: 1px solid colors.$GRAY0;
     margin-bottom: 20px;
     border-radius: 15px;
