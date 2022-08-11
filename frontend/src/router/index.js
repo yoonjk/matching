@@ -26,9 +26,10 @@ export default new VueRouter({
             component: FaceSelect
         },
         {
-            path: "/faceFinal/:userId",
+            path: "/faceFinal",
             name: "FaceFinal", 
-            component: FaceFinal
+            component: FaceFinal,
+            props: true
         },
         {
             path: "/mindQuestion",
