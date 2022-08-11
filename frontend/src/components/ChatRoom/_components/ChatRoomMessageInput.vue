@@ -1,18 +1,20 @@
 <template>
   <div class="chat-input-wrapper">
-    <AddSVG />
+    <AddSVG class="chat-add-icon" />
     <input
       type="textarea"
       placeholder="메세지를 입력하세요."
       @input="updateText($event)"
       @keyup.enter="confirmText($event)"
     />
-    <button type="button">-></button>
+    <SendSVG class="chat-send-icon" />
   </div>
 </template>
 
 <script>
 import AddSVG from "@/assets/icons/add.svg";
+import SendSVG from "@/assets/icons/send.svg";
+
 export default {
   name: "ChatRoomMessageInput",
   data() {
@@ -31,6 +33,7 @@ export default {
   },
   components: {
     AddSVG,
+    SendSVG,
   }
 };
 </script>
@@ -40,6 +43,22 @@ export default {
   display: flex;
   justify-content: center;
 }
+
+svg {
+  transform: scale(-50%);
+  border-radius: 50%;
+  transition: background-color 100ms;
+  cursor: pointer;
+
+  &:hover {
+    background-color: colors.$GRAY3;
+  }
+}
+/* 
+.chat-send-icon {
+  transform: scale(-50%);
+  border-radius: 50%;
+} */
 
 button {
   width: 40px;
