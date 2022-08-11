@@ -32,14 +32,14 @@ export default {
             isTop : false,
             isBottom : false,
             users : [
-                {user_id:"user1", nickname: "이니이니1", profile_filename : "jaein1.png", idx : 0},
-                {user_id:"user2", nickname: "이니이니2", profile_filename : "jaein2.png", idx : 1},
-                {user_id:"user3", nickname: "이니이니3", profile_filename : "jaein3.png", idx : 2},
-                {user_id:"user4", nickname: "이니이니4", profile_filename : "jaein4.png", idx : 3},
-                {user_id:"user5", nickname: "이니이니5", profile_filename : "jaein5.png", idx : 4},
-                {user_id:"user6", nickname: "이니이니6", profile_filename : "jaein6.png", idx : 5},
-                {user_id:"user7", nickname: "이니이니7", profile_filename : "jaein7.png", idx : 6},
-                {user_id:"user8", nickname: "이니이니8", profile_filename : "jaein8.png", idx : 7}
+                {user_id:"user1", nickname: "이니이니1", profile_filename : "jaein1.png"},
+                {user_id:"user2", nickname: "이니이니2", profile_filename : "jaein2.png"},
+                {user_id:"user3", nickname: "이니이니3", profile_filename : "jaein3.png"},
+                {user_id:"user4", nickname: "이니이니4", profile_filename : "jaein4.png"},
+                {user_id:"user5", nickname: "이니이니5", profile_filename : "jaein5.png"},
+                {user_id:"user6", nickname: "이니이니6", profile_filename : "jaein6.png"},
+                {user_id:"user7", nickname: "이니이니7", profile_filename : "jaein7.png"},
+                {user_id:"user8", nickname: "이니이니8", profile_filename : "jaein8.png"}
             ],
             save : [0,1,2,3,4,5,6,7]
         }
@@ -89,14 +89,26 @@ export default {
 
             if(this.stage == 1){ // 상세 페이지로
                 let finalUser = this.users[this.save[0]]
-                console.log(finalUser)
                 this.$router.push({name: 'FaceFinal', params: {user: finalUser}})
             }
-            
         },
         getProfile(i){
             return require("@/assets/" + this.users[i].profile_filename)
+        },
+        setIdx(){
+            // for(const key in this.users){
+            //     // this.users[key].push()
+            //     console.log(key)
+            // }
+            this.users = this.users.map((user, idx) => ({
+                ...user, 
+                idx,
+            }))
+            console.log(this.users)
         }
+    },
+    mounted(){
+        this.setIdx()
     }
 }
 </script>

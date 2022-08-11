@@ -7,7 +7,7 @@
             <div style="display:flex; align-items:center;">
                 <div style="width:180px;">
                 <div style="font-size:20px;">{{user.nickname}}, {{mydata.age}}세</div>
-                <div style="font-size:15px;"><v-icon small style="color:black;">mdi-map-marker</v-icon>{{mydata.addr}}</div>
+                <div style="font-size:15px;"><v-icon small style="color:black;">mdi-map-marker</v-icon>{{mydata.address}}</div>
                 </div>
                 <div id="chat" @click="goChat">
                     <v-icon large style="color:white">mdi-chat-outline</v-icon>
@@ -41,23 +41,14 @@ export default {
             this.$axios
                 .get(`/user/mydata/${this.user.user_id}`)
                 .then((response) => {
-                    console.log(response.data)
+                    this.mydata =  response.data
                 })
                 .catch((err) => {
                 console.log(err.response);
                 });
         },
         displayDetail() {
-            // this.$router.push(`/matchDetail/${this.userId}`);
-            console.log(this.user.user_id)
-            this.$axios
-                .get(`/user/mydata/user1`)
-                .then((response) => {
-                    console.log(response.data)
-                })
-                .catch((err) => {
-                console.log(err.response);
-                });
+            this.$router.push({name: 'MatchDetail', params: {user: this.user, mydata : this.mydata}})
         },
         reMatching() {
             this.$router.push("/faceSelect").catch(() => {});
@@ -68,6 +59,9 @@ export default {
         getProfile(i){
             return require("@/assets/" + i)
         }
+    },
+    mounted() { 
+        this.getMydata()
     }
 }
 </script>

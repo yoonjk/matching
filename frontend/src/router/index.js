@@ -37,9 +37,10 @@ export default new VueRouter({
             component: MindQuestion
         },
         {
-            path: "/matchDetail/:userId",
+            path: "/matchDetail",
             name: "MatchDetail",
-            component: MatchDetail
+            component: MatchDetail,
+            props: true
         },
         {
             path: "/mindMatchingList",
