@@ -37,7 +37,9 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+@use '../../../styles/constants/colors.scss';
+
 li {
   position: relative;
   width: calc(100% - 30px);
@@ -48,15 +50,19 @@ li {
   /* align-items: center; */
   list-style: none;
   border-radius: 15px;
-  background-color: #fff;
+  background-color: colors.$WHITE;
   transition: height 1s;
   cursor: pointer;
   transition: background-color 100ms;
+
+  &:hover {
+    background-color: colors.$GRAY0;
+  }
 }
 
-li:hover {
+/* li:hover {
   background-color: #fafafa;
-}
+} */
 
 .baseButton {
   display: flex;

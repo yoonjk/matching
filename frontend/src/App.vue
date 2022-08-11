@@ -26,8 +26,8 @@ export default {
 };
 </script>
 
-<style>
-@import url("./styles/index.css"); 
+<style lang="scss">
+@import "./styles/index.scss";
 /* #app { */
 /* font-family: Avenir, Helvetica, Arial, sans-serif; */
 /* -webkit-font-smoothing: antialiased; */
