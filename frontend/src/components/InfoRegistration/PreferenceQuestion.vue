@@ -2,7 +2,7 @@
     <div>
         <div class="quiz-main" v-for="(element, index) in questions.slice(a,b)" :key="index">
 
-            <v-progress-linear id="progressBar" rounded v-model="percentage" height="30" color="#FEBC0E" >
+            <v-progress-linear id="progressBar" rounded v-model="percentage" height="30" color="#7048e8" >
                 <strong style="color: white;"> {{ percentage }}%</strong>
             </v-progress-linear>
                 
@@ -16,7 +16,7 @@
         </div>
 
         <div style="text-align: center;"> 
-            <v-btn block id="nextBtn" @click="goNextQuestion" color="#FEBC0E" rounded style="height: 50px">다음</v-btn>
+            <v-btn block id="nextBtn" @click="goNextQuestion" color="#7048e8" rounded style="height: 50px">다음</v-btn>
         </div>
     </div>
 
@@ -87,7 +87,7 @@ export default {
             this.clickedLeft = false
             this.clickedRight = false
             if(this.b >= this.questions.length) {
-                this.$router.push("/faceFinal").catch(() => {}); // FIXME: path change
+                this.$router.push("/").catch(() => {}); // FIXME: path change
             } else {
                 this.a++;
                 this.b++;
@@ -102,7 +102,8 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+@use '../../styles/constants/colors.scss';
 
 #progressBar {
     margin-top: 80px;
