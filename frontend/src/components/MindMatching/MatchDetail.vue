@@ -36,7 +36,7 @@
                         <p>{{user.mbti_mind}}{{user.mbti_recog}}{{user.mbti_judge}}{{user.mbti_tactics}}</p> 
                         <p v-if="user.pet_prefer=='Y'">선호</p> <p v-else>비선호</p>
                         <p>1.{{mydata.consume_ptn1}} 2.{{mydata.consume_ptn2}} 3.{{mydata.consume_ptn3}}</p> 
-                        <p>{{mydata.assets}} 원</p> 
+                        <p>{{addComma(mydata.assets)}} 원</p> 
                         <p>{{mydata.invest_prop}}</p>
                     </div>
                 </div>
@@ -69,7 +69,12 @@ export default {
     methods :{
         goChat(){
             console.log(this.userId)
-        }
+        },
+        addComma(price) {
+            price = price + ""
+            var regexp = /\B(?=(\d{3})+(?!\d))/g
+            return price.toString().replace(regexp, ',')
+        },
     }
 }
 </script>

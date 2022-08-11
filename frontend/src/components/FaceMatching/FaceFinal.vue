@@ -44,7 +44,7 @@ export default {
                     this.mydata =  response.data
                 })
                 .catch((err) => {
-                console.log(err.response);
+                    console.log(err.response);
                 });
         },
         displayDetail() {

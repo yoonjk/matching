@@ -30,7 +30,7 @@
                         <v-row style="margin-top:30px;"><span>3위</span> <div id="consume-form">{{mydata.consume_ptn3}}</div></v-row>
                         </v-col>
                     </div>
-                    <div v-if="num==4" id="disable-form">{{mydata.assets}} </div> <span v-if="num==4">원</span>
+                    <div v-if="num==4" id="disable-form">{{addComma(mydata.assets)}} </div> <span v-if="num==4">원</span>
                     <div v-if="num==5" id="disable-form">{{mydata.invest_prop}} </div>
                     <div v-if="num==6" style="width:250px;" id="disable-form">
                         <v-select v-model="user.hobby" :items="hobbyItems" placeholder="취미를 선택하세요." style="font-size:20px; ">
@@ -83,6 +83,13 @@ export default {
         },
         goNext(){
             if(this.num == this.items.length-1){ // 성향 파악으로 이동
+                this.$axios.put(`/user`, this.user)
+                .then((response) => {
+                    console.log("업데이트 완료")
+                })
+                .catch((err)=>{
+                    console.log(err.response);
+                });
                 console.log("끝")
                 console.log(this.user)
                 return
@@ -96,18 +103,23 @@ export default {
         },
         check(){
             if(this.num == 0){
-                if (this.user.nickname == "") return true;
-                else return false;
+                if (this.user.nickname == "") return true
+                else return false
             }else if(this.num == 2){
-                if (this.user.job == "") return true;
-                else return false;
+                if (this.user.job == "") return true
+                else return false
             }else if(this.num == 6){
-                if (this.user.hobby == "") return true;
-                else return false;
+                if (this.user.hobby == "") return true
+                else return false
             }else{
-                return false;
+                return false
             }
-        }
+        },
+        addComma(price) {
+            price = price + ""
+            var regexp = /\B(?=(\d{3})+(?!\d))/g
+            return price.toString().replace(regexp, ',')
+        },
     }
 }
 </script>
