@@ -15,11 +15,11 @@
               <v-btn
                 v-if="isAgreed"
                 id="agreeBtn"
-                color="#FEBC0E"
+                color="#7048e8"
                 v-on:click="selectAgree"
                 fab
                 x-small
-                ><v-icon dark> mdi-check </v-icon></v-btn
+                ><v-icon color="white"> mdi-check </v-icon></v-btn
               >
               <v-btn
                 v-else
@@ -30,7 +30,7 @@
                 v-bind="attrs"
                 v-on:click="selectAgree"
                 v-on="on"
-                ><v-icon dark> mdi-check </v-icon></v-btn
+                ><v-icon color="white"> mdi-check </v-icon></v-btn
               >
             </template>
 
@@ -104,7 +104,7 @@
       <v-btn
         class="white--text"
         block
-        color="#F9BE1F"
+        color="#7048e8"
         v-on:click="goNextPage"
         style="height: 60px; font-size: 18px"
         >동의하고 시작</v-btn
