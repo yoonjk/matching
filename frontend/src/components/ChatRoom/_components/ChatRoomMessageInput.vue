@@ -7,13 +7,14 @@
       @input="updateText($event)"
       @keyup.enter="confirmText($event)"
     />
-    <SendSVG class="chat-send-icon" />
+    <SendSVG class="chat-send-icon" @click="sendMessage" />
   </div>
 </template>
 
 <script>
 import AddSVG from "@/assets/icons/add.svg";
 import SendSVG from "@/assets/icons/send.svg";
+import { produceKafkaChat } from "../_worker/kafka";
 
 export default {
   name: "ChatRoomMessageInput",
@@ -30,11 +31,14 @@ export default {
       this.$emit("sentMessageContent", this.text);
       this.text = "";
     },
+    sendMessage() {
+      produceKafkaChat();
+    },
   },
   components: {
     AddSVG,
     SendSVG,
-  }
+  },
 };
 </script>
 
@@ -42,6 +46,7 @@ export default {
 .chat-input-wrapper {
   display: flex;
   justify-content: center;
+  margin-bottom: 0;
 }
 
 svg {
@@ -54,11 +59,6 @@ svg {
     background-color: colors.$GRAY3;
   }
 }
-/* 
-.chat-send-icon {
-  transform: scale(-50%);
-  border-radius: 50%;
-} */
 
 button {
   width: 40px;

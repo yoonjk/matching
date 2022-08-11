@@ -13,7 +13,7 @@ export default {
 /* @import "@/styles/index.scss"; */
 
 * {
-  font-family: 'Spoqa Han Sans Neo', 'sans-serif';
+  /* font-family: 'Spoqa Han Sans Neo', 'sans-serif'; */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: colors.$GRAY9;

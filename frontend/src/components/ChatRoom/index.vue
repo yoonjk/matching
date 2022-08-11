@@ -1,24 +1,28 @@
 <template>
   <div class="screen">
     <ChatRoomMyProfile :user="this.user" />
-    <div
-      class="message-wrapper"
-      v-for="message in this.messages"
-      :key="message.messageId"
-    >
-      <ChatRoomDateDivider
-        v-if="
-          message.messageId === 0 ||
-          messages[message.messageId - 1].date !== message.date
-        "
-        :date="message.date"
-      />
-      <ChatRoomMessageBox
-        :message="message"
-        :onLeft="message.userId === receiver.userId"
-      />
-    </div>
-    <ChatRoomMessageInput @sentMessageContent="this.addSentMessage" />
+    <main>
+      <div class="messages">
+        <div
+          class="message-wrapper"
+          v-for="message in this.messages"
+          :key="message.messageId"
+        >
+          <ChatRoomDateDivider
+            v-if="
+              message.messageId === 0 ||
+              messages[message.messageId - 1].date !== message.date
+            "
+            :date="message.date"
+          />
+          <ChatRoomMessageBox
+            :message="message"
+            :onLeft="message.userId === receiver.userId"
+          />
+        </div>
+      </div>
+      <ChatRoomMessageInput @sentMessageContent="this.addSentMessage" />
+    </main>
   </div>
 </template>
 
@@ -79,9 +83,17 @@ export default {
   height: 100vh;
 }
 
+main {
+  height: calc(100% - 58px);
+}
+
 .message-wrapper {
   width: calc(100% - 30px);
   margin: 0 auto;
+}
+
+.messages {
+  height: calc(100% - 156px);
 }
 
 h1 {
