@@ -12,7 +12,10 @@
     "axios": "^0.27.2",
     "core-js": "^3.6.5",
     "pinia": "^2.0.11",
+    "dayjs": "^1.11.4",
     "vue": "^2.6.11",
+    "vue-loader": "^17.0.0",
+    "vue-template-compiler": "^2.6.14",
     "vue-router": "^3.5.3",
     "vuetify": "^2.6.0"
   },
@@ -27,7 +30,8 @@
     "sass-loader": "^10.3.1",
     "vue-cli-plugin-vuetify": "~2.5.1",
     "vue-template-compiler": "^2.6.11",
-    "vuetify-loader": "^1.7.0"
+    "vuetify-loader": "^1.7.0",
+    "vue-svg-loader": "^0.16.0"
   },
   "eslintConfig": {
     "root": true,
