@@ -86,6 +86,7 @@ export default {
                 this.$axios.put(`/user`, this.user)
                 .then((response) => {
                     console.log("업데이트 완료")
+                    console.log(response.data)
                 })
                 .catch((err)=>{
                     console.log(err.response);
