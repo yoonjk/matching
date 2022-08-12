@@ -24,7 +24,7 @@ module.exports = {
   },
   css: {
     loaderOptions: {
-      sass: {
+      scss: {
         data: `
           @use "@/styles/constants/colors.scss";
           @import "@/styles/global/index.scss";
