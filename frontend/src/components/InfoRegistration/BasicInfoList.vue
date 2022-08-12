@@ -21,18 +21,19 @@
                 </div>
                 <div style="display:flex; justify-content: center; align-items: center;">
                     <input v-if="num==0" id="text-form" v-model="user.nickname" placeholder="닉네임을 입력하세요.">
-                    <div v-if="num==1" id="disable-form">{{mydata.age}} </div> <span v-if="num==1">세</span>
-                    <input v-if="num==2" id="text-form" v-model="user.job" placeholder="직업을 입력하세요.">
-                    <div v-if="num==3" style="display:flex">
+                    <div v-if="num==1" id="disable-form">{{myData.age}} </div> <span v-if="num==1">세</span>
+                    <div v-if="num==2" id="disable-form">{{myData.address}} </div> <span v-if="num==2"></span>
+                    <input v-if="num==3" id="text-form" v-model="user.job" placeholder="직업을 입력하세요.">
+                    <div v-if="num==4" style="display:flex">
                         <v-col>
-                        <v-row><span>1위</span> <div id="consume-form">{{mydata.consume_ptn1}}</div></v-row>
-                        <v-row style="margin-top:30px;"><span>2위</span> <div id="consume-form">{{mydata.consume_ptn2}}</div></v-row>
-                        <v-row style="margin-top:30px;"><span>3위</span> <div id="consume-form">{{mydata.consume_ptn3}}</div></v-row>
+                        <v-row><span>1위</span> <div id="consume-form">{{myData.consume_ptn1}}</div></v-row>
+                        <v-row style="margin-top:30px;"><span>2위</span> <div id="consume-form">{{myData.consume_ptn2}}</div></v-row>
+                        <v-row style="margin-top:30px;"><span>3위</span> <div id="consume-form">{{myData.consume_ptn3}}</div></v-row>
                         </v-col>
                     </div>
-                    <div v-if="num==4" id="disable-form">{{addComma(mydata.assets)}} </div> <span v-if="num==4">원</span>
-                    <div v-if="num==5" id="disable-form">{{mydata.invest_prop}} </div>
-                    <div v-if="num==6" style="width:250px;" id="disable-form">
+                    <div v-if="num==5" id="disable-form">{{addComma(myData.assets)}} </div> <span v-if="num==5">원</span>
+                    <div v-if="num==6" id="disable-form">{{myData.invest_prop}} </div>
+                    <div v-if="num==7" style="width:250px;" id="disable-form">
                         <v-select v-model="user.hobby" :items="hobbyItems" placeholder="취미를 선택하세요." style="font-size:20px; ">
                         </v-select>
                     </div>
@@ -47,29 +48,35 @@
 </template>
 
 <script>
-// import axios from 'axios'
+import { useAppStore } from '../../store/userState'
 
 export default {
+    setup(){
+        const store = useAppStore()
+        return {store}
+    },
     data() {
         return{
             user_id : "user1",
             percent : 0,
-            user:{
-                nickname : "",
-                job : "",
-                hobby:""
-            },
-            mydata:{
-                age : "20",
-                consume_ptn1 : "식비", 
-                consume_ptn2 : "월세", 
-                consume_ptn3 : "의류비",
-                assets : "2000000000",
-                invest_prop : "공격적"
-            },
+            user:{},
+            myData:{},
+            // user:{
+            //     nickname : "",
+            //     job : "",
+            //     hobby:""
+            // },
+            // myData:{
+            //     age : "20",
+            //     consume_ptn1 : "식비", 
+            //     consume_ptn2 : "월세", 
+            //     consume_ptn3 : "의류비",
+            //     assets : "2000000000",
+            //     invest_prop : "공격적"
+            // },
             hobbyItems : ["스포츠/피트니스", "어학", "재테크/투자", "요리/음료/맛집", "교양/전시회", "게임/코딩/프로그래밍", "음악/악기", "사진/영상제작", "패션/뷰티", "공에/DIY", "미술/캘리그라피", "연기/춤", "기타"],
             num : 0,
-            items : ["닉네임은", "나이는", "직업은", "소비패턴TOP3는", "총 자산은", "투자성향은", "취미는"],
+            items : ["닉네임은", "나이는", "거주지는", "직업은", "소비패턴TOP3는", "총 자산은", "투자성향은", "취미는"],
             btnText : "다음"
         }
     },
@@ -82,17 +89,12 @@ export default {
             }
         },
         goNext(){
-            if(this.num == this.items.length-1){ // 성향 파악으로 이동
-                this.$axios.put(`/user`, this.user)
-                .then((response) => {
-                    console.log("업데이트 완료")
-                    console.log(response.data)
-                })
-                .catch((err)=>{
-                    console.log(err.response);
-                });
-                console.log("끝")
-                console.log(this.user)
+            if(this.num == this.items.length-1){ // 등록 완료, 성향 파악으로 이동
+                this.store.user.nickname = this.user.nickname
+                this.store.user.job = this.user.job
+                this.store.user.hobby = this.user.hobby
+                console.log(this.store.user)
+                this.$router.push("/preferenceQuestion").catch(() => {});
                 return
             }
 
@@ -116,11 +118,15 @@ export default {
                 return false
             }
         },
-        addComma(price) {
+        addComma(price){
             price = price + ""
             var regexp = /\B(?=(\d{3})+(?!\d))/g
             return price.toString().replace(regexp, ',')
         },
+    },
+    mounted(){
+        this.user = this.store.user
+        this.myData = this.store.myData
     }
 }
 </script>

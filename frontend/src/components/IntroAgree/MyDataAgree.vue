@@ -117,10 +117,9 @@
 
 import { useAppStore } from '../../store/userState'
 
-
 export default {
   setup() {
-        const store = useAppStore();
+        const store = useAppStore()
         return { store }
   },
   data() {
@@ -132,10 +131,10 @@ export default {
   },
   methods: {
     selectAgree() {
-      this.isAgreed = !this.isAgreed;
+      this.isAgreed = !this.isAgreed
     },
     displayAgreeText() {
-      this.dialog = !this.dialog;
+      this.dialog = !this.dialog
     },
     goNextPage() {
       this.store.user.agreeFlag = "F"

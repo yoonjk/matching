@@ -16,6 +16,21 @@ export const loadUser = async (userId) => {
   console.log(store.user.agreeFlag)
 };
 
+
+export const fetchMydata = async (userId) => {
+  const response = await axios.get(`/user/mydata/${userId}`);
+  return response.data;
+};
+
+export const loadMydata = async (userId) => {
+  const store = useAppStore();
+  
+  const myDataData = await fetchMydata(userId);
+  store.myData = myDataData;
+  // console.log(store.myData)
+};
+
+
 export const setUser = (userId) => {
   const store = useAppStore();
   console.log(userId)
@@ -31,4 +46,4 @@ export const setUser = (userId) => {
   //     console.log(err.response);
   //   });
   //   console.log(this.user)
-}
+};
