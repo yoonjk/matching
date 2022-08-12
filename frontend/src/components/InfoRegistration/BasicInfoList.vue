@@ -26,13 +26,13 @@
                     <input v-if="num==3" id="text-form" v-model="user.job" placeholder="직업을 입력하세요.">
                     <div v-if="num==4" style="display:flex">
                         <v-col>
-                        <v-row><span>1위</span> <div id="consume-form">{{myData.consume_ptn1}}</div></v-row>
-                        <v-row style="margin-top:30px;"><span>2위</span> <div id="consume-form">{{myData.consume_ptn2}}</div></v-row>
-                        <v-row style="margin-top:30px;"><span>3위</span> <div id="consume-form">{{myData.consume_ptn3}}</div></v-row>
+                        <v-row><span>1위</span> <div id="consume-form">{{myData.consumePtn1}}</div></v-row>
+                        <v-row style="margin-top:30px;"><span>2위</span> <div id="consume-form">{{myData.consumePtn2}}</div></v-row>
+                        <v-row style="margin-top:30px;"><span>3위</span> <div id="consume-form">{{myData.consumePtn3}}</div></v-row>
                         </v-col>
                     </div>
                     <div v-if="num==5" id="disable-form">{{addComma(myData.assets)}} </div> <span v-if="num==5">원</span>
-                    <div v-if="num==6" id="disable-form">{{myData.invest_prop}} </div>
+                    <div v-if="num==6" id="disable-form">{{myData.investProp}} </div>
                     <div v-if="num==7" style="width:250px;" id="disable-form">
                         <v-select v-model="user.hobby" :items="hobbyItems" placeholder="취미를 선택하세요." style="font-size:20px; ">
                         </v-select>
@@ -108,7 +108,7 @@ export default {
             if(this.num == 0){
                 if (this.user.nickname == "") return true
                 else return false
-            }else if(this.num == 2){
+            }else if(this.num == 3){
                 if (this.user.job == "") return true
                 else return false
             }else if(this.num == 6){
