@@ -105,7 +105,7 @@
         class="white--text"
         block
         color="#7048e8"
-        v-on:click="store.setUser(user)"
+        v-on:click="goNextPage"
         style="height: 60px; font-size: 18px"
         >동의하고 시작</v-btn
       >
@@ -139,8 +139,8 @@ export default {
       this.dialog = !this.dialog;
     },
     goNextPage() {
-        this.updateAgreeFlag()
-        this.$router.push("/").catch(() => {});
+      this.store.user.agreeFlag = "F"
+      this.$router.push("/basicInfoList").catch(() => {});
     }
   },
   mounted() {

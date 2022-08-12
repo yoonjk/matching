@@ -85,7 +85,7 @@ export default {
             if(this.num == this.items.length-1){ // 성향 파악으로 이동
                 this.$axios.put(`/user`, this.user)
                 .then((response) => {
-                    console.log("업데이트 완료")
+                    console.log(response.data)
                 })
                 .catch((err)=>{
                     console.log(err.response);
