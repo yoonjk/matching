@@ -18,7 +18,7 @@ export const loadUser = async (userId) => {
 
 export const loadMydata = async (userId) => {
   const store = useAppStore();
-  store.myData = await fetchMydata(userId);
+  store.myData = await fetchMyData(userId);
 };
 
 export const setUser = (userId) => {
