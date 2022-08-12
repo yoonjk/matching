@@ -1,7 +1,5 @@
-package com.matching.kb40.backend.controller;
+package com.matching.kb40.chatting.chattingserver.controller;
 
-import com.matching.kb40.backend.service.ChattingService;
-//import com.sun.media.jfxmedia.logging.Logger;
 
 import io.swagger.annotations.ApiOperation;
 
@@ -20,8 +18,6 @@ import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RestController;
-
-import com.matching.kb40.backend.dto.ChatDto;
 
 import lombok.extern.slf4j.Slf4j;
 

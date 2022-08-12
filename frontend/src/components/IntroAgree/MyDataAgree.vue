@@ -138,7 +138,8 @@ export default {
     },
     goNextPage() {
       this.store.user.agreeFlag = "F"
-      this.$router.push("/basicInfoList").catch(() => {});
+      // this.$router.push("/basicInfoList").catch(() => {});
+      this.$router.push("/preferenceQuestion").catch(() => {}); // TODO: change path into "/basicInfoList"
     }
   }
 };

@@ -1,4 +1,4 @@
-package com.matching.kb40.backend.dao;
+package com.matching.kb40.chatting.chattingserver.dao;
 
 import java.sql.SQLException;
 
@@ -6,8 +6,8 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.matching.kb40.backend.dto.ChatDto;
-import com.matching.kb40.backend.model.ReadChat;
+import com.matching.kb40.chatting.chattingserver.dto.ChatDto;
+import com.matching.kb40.chatting.chattingserver.model.ReadChat;
 
 @Repository
 public class ChattingDaoImpl implements ChattingDao {

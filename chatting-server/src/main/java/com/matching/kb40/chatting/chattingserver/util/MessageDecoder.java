@@ -1,4 +1,4 @@
-package com.matching.kb40.backend.util;
+package com.matching.kb40.chatting.chattingserver.util;
 
 import javax.websocket.DecodeException;
 import javax.websocket.Decoder;

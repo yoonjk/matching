@@ -1,4 +1,4 @@
-package com.matching.kb40.backend.service;
+package com.matching.kb40.chatting.chattingserver.service;
 
 import javax.websocket.Session;
 

@@ -1,10 +1,10 @@
-package com.matching.kb40.backend.dao;
+package com.matching.kb40.chatting.chattingserver.dao;
 
 import java.sql.SQLException;
 import java.util.HashMap;
 
-import com.matching.kb40.backend.dto.ChatDto;
-import com.matching.kb40.backend.model.ReadChat;
+import com.matching.kb40.chatting.chattingserver.dto.ChatDto;
+import com.matching.kb40.chatting.chattingserver.model.ReadChat;
 
 public interface ChattingDao {
 

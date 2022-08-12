@@ -1,4 +1,4 @@
-package com.matching.kb40.backend.model;
+package com.matching.kb40.chatting.chattingserver.model;
 
 import org.apache.ibatis.type.Alias;
 

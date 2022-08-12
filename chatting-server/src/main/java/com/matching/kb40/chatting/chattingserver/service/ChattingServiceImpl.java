@@ -1,7 +1,7 @@
-package com.matching.kb40.backend.service;
+package com.matching.kb40.chatting.chattingserver.service;
 
-import com.matching.kb40.backend.dao.ChattingDao;
-import com.matching.kb40.backend.dto.ChatDto;
+import com.matching.kb40.chatting.chattingserver.dao.ChattingDao;
+import com.matching.kb40.chatting.chattingserver.dto.ChatDto;
 
 import java.util.Collections;
 import java.util.Set;
@@ -20,8 +20,8 @@ import org.springframework.kafka.support.Acknowledgment;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.matching.kb40.backend.model.NewChat;
-import com.matching.kb40.backend.model.ReadChat;
+import com.matching.kb40.chatting.chattingserver.model.NewChat;
+import com.matching.kb40.chatting.chattingserver.model.ReadChat;
 import com.google.gson.Gson;
 
 import lombok.extern.slf4j.Slf4j;

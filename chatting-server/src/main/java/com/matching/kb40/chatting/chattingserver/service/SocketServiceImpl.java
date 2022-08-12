@@ -1,12 +1,4 @@
-package com.matching.kb40.backend.service;
-
-import com.matching.kb40.backend.dao.ChattingDao;
-import com.matching.kb40.backend.dto.ChatDto;
-import com.matching.kb40.backend.model.NewChat;
-import com.matching.kb40.backend.model.ReadChat;
-import com.matching.kb40.backend.model.SocketReqMessage;
-import com.matching.kb40.backend.util.MessageDecoder;
-import com.matching.kb40.backend.util.MessageEncoder;
+package com.matching.kb40.chatting.chattingserver.service;
 
 import java.net.Socket;
 import java.util.Collections;
@@ -22,6 +14,10 @@ import javax.websocket.server.ServerEndpoint;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
+
+import com.matching.kb40.chatting.chattingserver.model.SocketReqMessage;
+import com.matching.kb40.chatting.chattingserver.util.MessageDecoder;
+import com.matching.kb40.chatting.chattingserver.util.MessageEncoder;
 
 import lombok.extern.slf4j.Slf4j;
 
