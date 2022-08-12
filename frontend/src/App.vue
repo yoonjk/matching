@@ -1,25 +1,30 @@
 <template>
 <v-app>
   <MenuBar/>
-  <div style="margin-top:50px; padding-top:20px;">
+  <div style="margin-top:50px; padding-top:20px;  height: calc(100% - 73px);">
   <router-view></router-view>
   </div>
 </v-app>
 </template>
 
 <script>
-import MenuBar from './components/MenuBar';
+import MenuBar from "./components/MenuBar"
+import { loadUser, loadMydata } from './worker/user'
 
 export default {
-  name: 'App',
+  name: "App",
 
   components: {
-    MenuBar
+    MenuBar,
   },
 
   data: () => ({
     //
   }),
+  created() {
+    loadUser('user1')
+    loadMydata("user1")
+  }
 };
 </script>
 <style>
