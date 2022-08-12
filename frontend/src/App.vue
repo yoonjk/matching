@@ -9,6 +9,7 @@
 
 <script>
 import MenuBar from "./components/MenuBar";
+import { loadUser } from './worker/user';
 
 export default {
   name: "App",
@@ -20,6 +21,9 @@ export default {
   data: () => ({
     //
   }),
+  created() {
+    loadUser("user1")
+  },
 };
 </script>
 <style>

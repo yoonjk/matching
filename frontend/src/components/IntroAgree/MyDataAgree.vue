@@ -116,7 +116,6 @@
 <script>
 
 import { useAppStore } from '../../store/userState'
-import { loadUser } from '../../worker/user';
 
 
 export default {
@@ -140,11 +139,9 @@ export default {
     },
     goNextPage() {
       this.store.user.agreeFlag = "F"
-      this.$router.push("/basicInfoList").catch(() => {});
+      // this.$router.push("/basicInfoList").catch(() => {});
+      this.$router.push("/preferenceQuestion").catch(() => {}); // TODO: change path into "/basicInfoList"
     }
-  },
-  mounted() {
-    loadUser("user1")
   }
 };
 </script>
