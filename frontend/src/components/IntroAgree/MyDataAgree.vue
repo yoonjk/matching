@@ -116,12 +116,10 @@
 <script>
 
 import { useAppStore } from '../../store/userState'
-import { loadUser } from '../../worker/user';
-
 
 export default {
   setup() {
-        const store = useAppStore();
+        const store = useAppStore()
         return { store }
   },
   data() {
@@ -133,18 +131,15 @@ export default {
   },
   methods: {
     selectAgree() {
-      this.isAgreed = !this.isAgreed;
+      this.isAgreed = !this.isAgreed
     },
     displayAgreeText() {
-      this.dialog = !this.dialog;
+      this.dialog = !this.dialog
     },
     goNextPage() {
       this.store.user.agreeFlag = "F"
       this.$router.push("/basicInfoList").catch(() => {});
     }
-  },
-  mounted() {
-    loadUser("user1")
   }
 };
 </script>
