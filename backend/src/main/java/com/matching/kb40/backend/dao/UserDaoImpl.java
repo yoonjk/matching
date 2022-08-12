@@ -15,31 +15,31 @@ public class UserDaoImpl implements UserDao{
 	String ns = "user.";
 
     @Autowired
-	SqlSessionTemplate sqlSessionTemplate;
+	SqlSessionTemplate SqlSessionTemplate;
 
 	@Override
 	public UserDto retrieve(String userId) throws SQLException {
-		return sqlSessionTemplate.selectOne(ns.concat("selectByUserId"), userId);
+		return SqlSessionTemplate.selectOne(ns.concat("selectByUserId"), userId);
 	}
 
 	@Override
 	public List<UserDto> retrieveAll() throws SQLException {
-		return sqlSessionTemplate.selectList(ns.concat("selectAll"));
+		return SqlSessionTemplate.selectList(ns.concat("selectAll"));
 	}
 
 	@Override
 	public void update(UserDto user) throws SQLException {
-		sqlSessionTemplate.update(ns.concat("updateByUserId"), user);
+		SqlSessionTemplate.update(ns.concat("updateByUserId"), user);
 	}
 
 	@Override
 	public void delete(String userId) throws SQLException {
-		sqlSessionTemplate.delete(ns.concat("deleteByUserId"), userId);
+		SqlSessionTemplate.delete(ns.concat("deleteByUserId"), userId);
 	}
 
 	@Override
 	public MydataDto retrieveMydata(String userId) throws SQLException {
-		return sqlSessionTemplate.selectOne(ns.concat("selectMydataByUserId"), userId);
+		return SqlSessionTemplate.selectOne(ns.concat("selectMydataByUserId"), userId);
 	}
 
 
