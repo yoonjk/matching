@@ -29,7 +29,7 @@ public class UserDaoImpl implements UserDao{
 
 	@Override
 	public List<UserDto> retrieveRandom(String gender) throws SQLException {
-		return sqlSessionTemplate.selectList(ns.concat("selectRandom"));
+		return sqlSessionTemplate.selectList(ns.concat("selectRandom"), gender);
 	}
 
 	@Override
