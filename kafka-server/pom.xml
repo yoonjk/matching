@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.matching.kb40.chatting</groupId>
-	<artifactId>chatting-server</artifactId>
+	<artifactId>kafka-server</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>chatting-server</name>
+	<name>kafka-server</name>
 	<description>Demo project for Spring Boot</description>
 	<properties>
 		<java.version>8</java.version>
@@ -41,12 +41,6 @@
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
 			<scope>runtime</scope>
-		</dependency>
-		
-		<!-- RT Chat -->
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-websocket</artifactId>
 		</dependency>
 
 		<!--Lombok-->

@@ -3,7 +3,7 @@
 
 <mapper namespace="chatting">
 
-    <insert id="insertChat" parameterType="com.matching.kb40.chatting.chattingserver.dto.ChatDto">
+    <insert id="insertChat" parameterType="ChatDto">
         INSERT INTO tb_chat
         (
             match_id, 
@@ -22,7 +22,7 @@
         )
     </insert>
 
-    <update id="updateChat" parameterType="com.matching.kb40.chatting.chattingserver.model.ReadChat">
+    <update id="updateChat" parameterType="ReadChat">
         UPDATE tb_chat
 	        SET read_flag = 'Y'
         WHERE 
