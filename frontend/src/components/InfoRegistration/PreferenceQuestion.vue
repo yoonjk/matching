@@ -108,7 +108,7 @@ export default {
             this.clickedRight = false
             if(this.b >= this.questions.length) {
                 setUser()
-                // this.$router.push("/").catch(() => {});
+                this.$router.push("/").catch(() => {});
             } else {
                 this.a++;
                 this.b++;
