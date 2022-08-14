@@ -1,14 +1,14 @@
 <template>
     <div>
-        <div style="text-align: center;"> 
-                <v-btn block id="retryBtn" @click="retry" color="#7048e8" rounded style="margin-top: 50px">다시하기(500원)</v-btn>
+        <div id="box-retry" style="text-align: center; margin-left: 15px; margin-right: 15px;"> 
+                <v-btn block id="retryBtn" @click="retry" color="#868e96" rounded style="margin-top: 50px">다시하기(500원)</v-btn>
         </div>
 
         <v-container fluid style="margin-top: 30px;">
             <v-row dense id="main">
             <v-col v-for="(person, index) in people.slice(0,1)" :key="index" cols="12" xs="12">
-                <v-card id="mainCard" class="pa-3" outlined v-on:click="goDetailPage" style="border:5px solid #7048e8;" color="#C4C4C4">
-                <div id="percentLabel" style="background-color: #7048e8; " >100% match</div>
+                <v-card id="mainCard" class="pa-3" outlined v-on:click="goDetailPage" style="border:5px solid #b197fc;" color="#FFFFFF">
+                <div id="percentLabel" style="background-color: #b197fc; " >100% match</div>
                 <img id="topImage" :src="getProfile(index)" @click="goDetailPage"/>
                 <v-spacer></v-spacer>
                 <v-card rounded id="nameLabel">{{person.name}}, {{person.age}}세</v-card>
@@ -18,8 +18,8 @@
            
             <v-row dense id="sub">
             <v-col v-for="(person, index) in people.slice(1)" :key="index" cols="6" xs="6">
-                <v-card id="subCard" class="pa-3" outlined v-on:click="goDetailPage" style=" border:5px solid #7048e8; " color="#C4C4C4">
-                <div id="percentLabel" style="background-color: #7048e8; ">100% match</div>
+                <v-card id="subCard" class="pa-3" outlined v-on:click="goDetailPage" style=" border:5px solid #b197fc; " color="#FFFFFF">
+                <div id="percentLabel" style="background-color: #b197fc; ">100% match</div>
                 <img id="bottomImages" :src="getProfile(index)" @click="goDetailPage"/>
                 <v-spacer></v-spacer>
                 <v-card rounded id="nameLabel">{{person.name}}, {{person.age}}세</v-card>
@@ -158,6 +158,7 @@ export default {
     color: white;
     height: 250px;
     border-radius: 20px;
+    margin-bottom: 20px;
 }
 
 #percentLabel {
@@ -173,6 +174,7 @@ export default {
 #retryBtn {
     display : flex;
     align-items:center;
+    color: white;
 }
 
 #box-user {
@@ -197,7 +199,7 @@ export default {
 
 #nameLabel {
     color: white;
-    background-color: #9775fa;
+    background-color: #7950f2;
     width: 90%;
     display: flex;
     align-items: center;

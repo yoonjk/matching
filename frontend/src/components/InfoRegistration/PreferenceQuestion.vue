@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="quiz-main" v-for="(element, index) in questions.slice(a,b)" :key="index" style="margin: 20px">
+        <div class="quiz-main" v-for="(element, index) in questions.slice(a,b)" :key="index" style="margin-left: 20px; margin-right: 20px">
 
             <v-progress-linear id="progressBar" rounded v-model="percentage" style="width:100%; border-radius:20px;" height="30" color="#7048e8" >
                 <strong style="color: white;"> {{ percentage }}%</strong>
@@ -160,20 +160,22 @@ export default {
 }
 
 #box-answer {
-    width:160px;
-    height:180px;
+    width:150px;
+    height:150px;
     list-style: none;
     line-height: 2;
     margin-left: 10px;
     margin-right: 10px;
     border: 1px solid #DDDDDD;
     border-radius: 15px;
+    font-size: 12px;
     cursor: pointer;
 }
 
 #nextBtn {
     margin-top: 50px;
     color: white;
+    font-size: 24px;
 }
 
 </style>

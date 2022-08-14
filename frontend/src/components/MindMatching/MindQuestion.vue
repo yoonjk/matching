@@ -16,7 +16,7 @@
             <h1 id="guideText">매칭 전 몇 가지만 확인할게요!</h1>
             
             <div class="box-question">
-                <h1 id="questionText" style="font-size: 24px"> {{ element.questionContent }}</h1>
+                <h1 id="questionText" style="font-size: 20px"> {{ element.questionContent }}</h1>
             </div>
             <div id="box-answers" style="padding-bottom: 50px;">
                 <v-btn id="box-answer" v-on:click="selectLeftAnswer" v-bind:color="clickedLeft ? '#666666' : '#F3F4F6'" > {{ element.answerContent1 }} </v-btn>
@@ -91,6 +91,18 @@ export default {
     color: white;
 }
 
+#step1 {
+    color: white;
+}
+
+#step2 {
+    color: white;
+}
+
+#step3 {
+    color: white;
+}
+
 #guideText{
     text-align: center;
     font-weight: normal;
@@ -108,12 +120,12 @@ export default {
 }
 
 #box-answer {
-    width:160px;
+    width: 45%;
     height:180px;
     list-style: none;
     line-height: 2;
-    margin-left: 10px;
-    margin-right: 10px;
+    margin-left: 5px;
+    margin-right: 5px;
     border: 1px solid colors.$GRAY0;
     margin-bottom: 20px;
     border-radius: 15px;

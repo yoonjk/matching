@@ -1,13 +1,11 @@
 <template>
-  <div class="wrapper">
-    <div style="margin: 15px">
+  <v-container class="wrapper">
+    <div style="margin-left: 15px; margin-right: 15px">
       <h3 style="margin-top: 30px; margin-bottom: 10px; font-size: 16px">
         마이데이터 수집·이용 동의
       </h3>
       <v-divider></v-divider>
-      <h2 style="margin-top: 30px; font-size: 20px">
-        마이데이터 수집·이용 동의하고<br />연결고리 서비스를 시작해 보세요.
-      </h2>
+      <h2 style="margin-top: 30px; font-size: 20px"> 마이데이터 수집·이용 동의하고<br />연결고리 서비스를 시작해 보세요.</h2>
       <div id="box-agree">
         <div class="text-center">
           <v-dialog v-model="dialog" width="500">
@@ -39,22 +37,22 @@
                 >"연결고리" 서비스 이용약관</v-card-title
               >
               <v-card-text>
-                제 1 조 (목적)
-이 약관은 주식회사 국민은행(이하 “은행”이라 합니다)과 “은행”이 제공하는 “연결고리서비
-스”(이하 “서비스”라 합니다)를 이용하는 고객(이하 ”이용자” 라 합니다) 사이의 권리, 의무 및 책
-임사항, “서비스” 제공에 관한 제반 사항을 규정함을 목적으로 합니다.제 2 조 (용어의 정의)
-① 이 약관에서 사용하는 용어의 의미는 다음과 같습니다.
-1. “서비스”라 함은 “이용자”의 “개인신용정보” 전송요구에 따라 은행, 카드, 보험, 증권, 통신
-업권 또는 공공기관 등에 분산된 이용자의 금융정보 등의 “개인신용정보”를 통합하여 제
-공하는 통합조회 서비스, 자산관리 서비스, 지출관리 서비스, 기타 “은행”이 제공하는 서비
-스를 의미합니다.
-2. “이용자”는 이 약관에 따라 “은행”과 이용 계약을 체결하고 “은행”으로부터 “서비스” 이용
-자격을 부여 받은 고객을 의미합니다.
-3. “개인신용정보”란 금융거래 등 상거래에서 개인인 신용정보주체의 신용, 거래내용, 거래능
-력 등을 판단할 수 있는 정보를 말합니다.
-4. “정보제공자”란 『신용정보의 이용 및 보호에 관한 법률』 제33조의2 조에 따라 신용정보를
-전송할 의무가 있으며, 이러한 의무에 따라 “이용자”의 “개인신용정보”를 전송하는 자를
-말합니다.
+                              제 1 조 (목적)
+              이 약관은 주식회사 국민은행(이하 “은행”이라 합니다)과 “은행”이 제공하는 “연결고리서비
+              스”(이하 “서비스”라 합니다)를 이용하는 고객(이하 ”이용자” 라 합니다) 사이의 권리, 의무 및 책
+              임사항, “서비스” 제공에 관한 제반 사항을 규정함을 목적으로 합니다.제 2 조 (용어의 정의)
+              ① 이 약관에서 사용하는 용어의 의미는 다음과 같습니다.
+              1. “서비스”라 함은 “이용자”의 “개인신용정보” 전송요구에 따라 은행, 카드, 보험, 증권, 통신
+              업권 또는 공공기관 등에 분산된 이용자의 금융정보 등의 “개인신용정보”를 통합하여 제
+              공하는 통합조회 서비스, 자산관리 서비스, 지출관리 서비스, 기타 “은행”이 제공하는 서비
+              스를 의미합니다.
+              2. “이용자”는 이 약관에 따라 “은행”과 이용 계약을 체결하고 “은행”으로부터 “서비스” 이용
+              자격을 부여 받은 고객을 의미합니다.
+              3. “개인신용정보”란 금융거래 등 상거래에서 개인인 신용정보주체의 신용, 거래내용, 거래능
+              력 등을 판단할 수 있는 정보를 말합니다.
+              4. “정보제공자”란 『신용정보의 이용 및 보호에 관한 법률』 제33조의2 조에 따라 신용정보를
+              전송할 의무가 있으며, 이러한 의무에 따라 “이용자”의 “개인신용정보”를 전송하는 자를
+              말합니다.
               </v-card-text>
               <v-divider></v-divider>
               <v-card-actions>
@@ -102,13 +100,12 @@
         <h3
           id="agreeText"
           v-on:click="displayAgreeText"
-          style="font-size: 16px; margin-left: 20px"
-        >
+          style="font-size: 16px; margin-left: 20px">
           마이데이터 수집·이용 동의(필수) >
         </h3>
       </div>
     </div>
-
+    <v-spacer></v-spacer>
     <div id="bottomBtn">
       <v-btn
         class="white--text"
@@ -116,13 +113,13 @@
         color="#7048e8"
         v-on:click="goNextPage"
         style="height: 60px; font-size: 18px"
-        >동의하고 시작</v-btn
+        >시작</v-btn
       >
       <v-snackbar v-model="alert" Bottom flat color="red" rounded="pill" :timeout="1500">
                 <span class="snackText"> 동의 후 진행해주세요</span>
       </v-snackbar>
     </div>
-  </div>
+  </v-container>
 </template>
 
 <script>
@@ -168,7 +165,7 @@ export default {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: 100vh;
+  height: 100%;
 }
 
 #box-agree {
@@ -191,6 +188,5 @@ export default {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  transform: translateY(-100%); /*  FIXME: it should be modified after remove MenuBar  */
 }
 </style>
