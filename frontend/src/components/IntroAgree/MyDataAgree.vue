@@ -8,13 +8,15 @@
       <h2 style="margin-top: 30px; font-size: 20px"> 마이데이터 수집·이용 동의하고<br />연결고리 서비스를 시작해 보세요.</h2>
       <div id="box-agree">
         <div class="text-center">
+
+          <!-- first dialog box -->
           <v-dialog v-model="dialog" width="500">
             <template v-slot:activator="{ on, attrs }">
               <v-btn
-                v-if="isAgreed"
+                v-if="isAgreed === true && isPurchaseAgreed === true"
                 id="agreeBtn"
                 color="#7048e8"
-                v-on:click="selectAgree"
+                v-on:click="selectTotalAgree"
                 fab
                 x-small
                 ><v-icon color="white"> mdi-check </v-icon></v-btn
@@ -26,7 +28,7 @@
                 fab
                 x-small
                 v-bind="attrs"
-                v-on:click="selectAgree"
+                v-on:click="selectTotalAgree"
                 v-on="on"
                 ><v-icon color="white"> mdi-check </v-icon></v-btn
               >
@@ -70,12 +72,52 @@
               </v-card-actions>
             </v-card>
           </v-dialog>
+
+          <!-- second dialog box -->
+          <v-dialog v-model="dialog2" width="500">
+            <v-card>
+              <v-card-title class="text-h5 grey lighten-2"
+                >"연결고리" 인 앱 결제 이용약관</v-card-title
+              >
+              <v-card-text>
+                              제 7 조 (서비스 이용 통지)
+                ① “은행”이 “이용자”에 대한 통지를 하는 경우 이 약관에 별도 규정이 없는 한 “이용자”의 이메
+                일, 문자 등의 방법으로 통지합니다.
+                ② “은행”은 전체 “이용자”에 대하여 통지가 필요한 경우 홈페이지, 모바일 어플리케이션 등에
+                게시함으로써 제1항의 통지에 갈음할 수 있습니다. 다만, “이용자”에게 중대한 영향을 미치는
+                사항에 대하여는 이메일, 문자 등의 방법으로 개별 통지합니다.
+
+                제 8 조 (이용 수수료)
+                ① “은행”은 사용자의 “서비스” 이용에 따른 수수료를 부과할 수 있습니다.
+                ② “은행”은 수수료에 관한 사항을 홈페이지 등에 게시합니다.
+                ③ “은행”은 수수료를 변경하고자 하는 경우 이 약관 제16조를 준용합니다.
+              </v-card-text>
+              <v-divider></v-divider>
+              <v-card-actions>
+                <v-spacer></v-spacer>
+                <v-btn
+                  color="primary"
+                  text
+                  @click="
+                    dialog2 = false;
+                    isPurchaseAgreed = true;
+                  "
+                >
+                  I accept
+                </v-btn>
+              </v-card-actions>
+            </v-card>
+          </v-dialog>
+
         </div>
+
+        <!-- total agree box -->
         <h3 style="font-size: 16px; margin-left: 20px">전체 동의</h3>
       </div>
 
       <v-divider></v-divider>
 
+      <!-- first agree box -->
       <div id="box-agreeText">
         <v-btn
           v-if="isAgreed"
@@ -84,7 +126,7 @@
           fab
           text
           x-small
-          v-on:click="selectAgree"
+          v-on:click="selectFirstAgree"
           ><v-icon>mdi-check</v-icon></v-btn
         >
         <v-btn
@@ -94,14 +136,44 @@
           fab
           text
           x-small
-          v-on:click="selectAgree"
+          v-on:click="selectFirstAgree"
           ><v-icon>mdi-check</v-icon></v-btn
         >
         <h3
           id="agreeText"
-          v-on:click="displayAgreeText"
+          v-on:click="displayMyDataAgreeText"
           style="font-size: 16px; margin-left: 20px">
           마이데이터 수집·이용 동의(필수) >
+        </h3>
+      </div>
+
+        <!-- second agree box -->
+       <div id="box-agreeText"> 
+        <v-btn
+          v-if="isPurchaseAgreed"
+          color="#000000"
+          plain
+          fab
+          text
+          x-small
+          v-on:click="selectSecondAgree"
+          ><v-icon>mdi-check</v-icon></v-btn
+        >
+        <v-btn
+          v-else
+          color="#AEAEAE"
+          plain
+          fab
+          text
+          x-small
+          v-on:click="selectSecondAgree"
+          ><v-icon>mdi-check</v-icon></v-btn
+        >
+        <h3
+          id="agreeText"
+          v-on:click="displayInAppPurchaseText"
+          style="font-size: 16px; margin-left: 20px">
+          인 앱 결제 동의(필수) >
         </h3>
       </div>
     </div>
@@ -134,17 +206,34 @@ export default {
   data() {
     return {
       dialog: false,
+      dialog2: false,
       user: null,
       alert: false,
       isAgreed: 0,
+      isPurchaseAgreed: 0,
     };
   },
   methods: {
-    selectAgree() {
+    selectFirstAgree() {
       this.isAgreed = !this.isAgreed
     },
-    displayAgreeText() {
+    selectSecondAgree() {
+      this.isPurchaseAgreed = !this.isPurchaseAgreed
+    },
+    selectTotalAgree() {
+      if(this.isAgreed && this.isPurchaseAgreed) {
+        this.isAgreed = false
+        this.isPurchaseAgreed = false
+      } else {
+        this.isAgreed = true
+        this.isPurchaseAgreed = true
+      }
+    },
+    displayMyDataAgreeText() {
       this.dialog = !this.dialog
+    },
+    displayInAppPurchaseText() {
+      this.dialog2 = !this.dialog2
     },
     goNextPage() {
       if(!this.isAgreed) {
