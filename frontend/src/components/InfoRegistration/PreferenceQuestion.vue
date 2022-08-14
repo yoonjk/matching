@@ -10,8 +10,8 @@
                 <h1 id="questionText"> {{ element.question }}</h1>
             </div>
             <div id="box-answers" style="padding-bottom: 50px;">
-                <v-btn id="box-answer" v-on:click="selectLeftAnswer" v-bind:color="clickedLeft ? '#666666' : '#F3F4F6'" > {{ element.suggestions[0].suggestion }} </v-btn>
-                <v-btn id="box-answer" v-on:click="selectRightAnswer" v-bind:color="clickedRight ? '#666666' : '#F3F4F6'" > {{ element.suggestions[1].suggestion }} </v-btn>                
+                <v-btn id="box-answer" v-on:click="selectLeftAnswer(element)" v-bind:color="clickedLeft ? '#666666' : '#F3F4F6'" > {{ element.suggestions[0].suggestionContent }} </v-btn>
+                <v-btn id="box-answer" v-on:click="selectRightAnswer(element)" v-bind:color="clickedRight ? '#666666' : '#F3F4F6'" > {{ element.suggestions[1].suggestionContent }} </v-btn>                
             </div>
         </div>
 
@@ -23,7 +23,14 @@
 </template>
 
 <script>
+import { useAppStore } from '../../store/userState'
+import { setUser } from '../../worker/user';
+
 export default {
+    setup() {
+        const store = useAppStore();
+        return { store }
+    },
     data() {
         return {
             a: 0,
@@ -35,59 +42,73 @@ export default {
                 {
                     question: "당신은 당신의 반려동물과 모르는 사람 중 하나만 살릴 수 있다. 당신은 누구를 살릴 것인가? ",
                     suggestions: [
-                        { suggestion: "반려동물"},
-                        { suggestion: "모르는 사람"}
-                    ]
+                        { suggestionContent: "반려동물", answer: "Y"},
+                        { suggestionContent: "모르는 사람", answer: "N"}
+                    ],
+                    userTableColName: "petPrefer"
                 },
                 {
                     question: "당신은 외향형 입니까? 내향형 입니까?",
                     suggestions: [
-                        { suggestion: "외향형"},
-                        { suggestion: "내향형"}
-                    ]
+                        { suggestionContent: "E", answer: "E"},
+                        { suggestionContent: "I", answer: "I"}
+                    ],
+                    userTableColName: "mbtiMind"
                 },
                 {
                     question: "당신은 외향형 입니까? 내향형 입니까?",
                     suggestions: [
-                        { suggestion: "외향형"},
-                        { suggestion: "내향형"}
-                    ]
+                        { suggestionContent: "S", answer: "S"},
+                        { suggestionContent: "N", answer: "N"}
+                    ],
+                    userTableColName: "mbtiRecog"
                 },
                 {
                     question: "당신은 외향형 입니까? 내향형 입니까?",
                     suggestions: [
-                        { suggestion: "외향형"},
-                        { suggestion: "내향형"}
-                    ]
+                        { suggestionContent: "T", answer: "T"},
+                        { suggestionContent: "F", answer: "F"}
+                    ],
+                    userTableColName: "mbtiJudge"
                 },
                 {
                     question: "당신은 외향형 입니까? 내향형 입니까?",
                     suggestions: [
-                        { suggestion: "외향형"},
-                        { suggestion: "내향형"}
-                    ]
+                        { suggestionContent: "J", answer: "J"},
+                        { suggestionContent: "P", answer: "P"}
+                    ],
+                    userTableColName: "mbtiTactics"
                 }
             ]
         }
     },
     methods: {
-        selectLeftAnswer() {
+        selectLeftAnswer(object) {
+            // toggle event
             this.clickedLeft = !this.clickedLeft
             if(this.clickedRight) {
                 this.clickedRight = !this.clickedRight
             }
+
+            // update value in user object
+            this.store.user[object.userTableColName] = object.suggestions[0].answer
         },
-        selectRightAnswer() {
+        selectRightAnswer(object) {
+            // toggle event
             this.clickedRight = !this.clickedRight
             if(this.clickedLeft) {
                 this.clickedLeft = !this.clickedLeft
             }
+
+            // update value in user object
+            this.store.user[object.userTableColName] = object.suggestions[1].answer
         },
         goNextQuestion() {
             this.clickedLeft = false
             this.clickedRight = false
             if(this.b >= this.questions.length) {
-                this.$router.push("/").catch(() => {}); // FIXME: path change
+                setUser()
+                // this.$router.push("/").catch(() => {});
             } else {
                 this.a++;
                 this.b++;
@@ -103,7 +124,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@use '../../styles/constants/colors.scss';
 
 #progressBar {
     margin-top: 80px;

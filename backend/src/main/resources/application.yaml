@@ -9,7 +9,7 @@ spring:
 
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://user08.169.56.100.104.nip.io:30503/matching?useUnicode=true&characterEncoding=utf-8
+    url: jdbc:mysql://matching.169.56.100.104.nip.io:30503/matching?useUnicode=true&characterEncoding=utf-8
     username: ${DB_USERNAME:admin}
     password: ${DB_PASSWORD:passw0rd}
     hikari:
@@ -27,6 +27,9 @@ mybatis:
   configuration:
     map-underscore-to-camel-case: true
     default-fetch-size: 100
-    default-statement-timeout: 30    
+    default-statement-timeout: 30 
+  type-aliases-package: com.matching.kb40.backend
 
 #Parameter
+
+
