@@ -10,6 +10,7 @@
 <script>
 import MenuBar from "./components/MenuBar"
 import { loadUser, loadMydata } from './worker/user'
+// import { useAppStore } from './store/userState'
 
 export default {
   name: "App",
@@ -21,9 +22,9 @@ export default {
   data: () => ({
     //
   }),
-  created() {
-    loadUser('user1')
-    loadMydata("user1")
+  async created() {
+    await loadUser('user1')
+    await loadMydata('user1')
   }
 };
 </script>

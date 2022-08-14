@@ -13,7 +13,6 @@ export const loadUser = async (userId) => {
   
   const userData = await fetchUser(userId);
   store.user = userData;
-  console.log(store.user.agreeFlag)
 };
 
 
@@ -28,14 +27,15 @@ export const loadMydata = async (userId) => {
   const myDataData = await fetchMydata(userId);
   store.myData = myDataData;
   // console.log(store.myData)
+  // console.log(store.user)
 };
 
 
 export const setUser = (userId) => {
   const store = useAppStore();
-  console.log(userId)
-  console.log(store.user.agreeFlag)
-  console.log(store.user.mbtiMind + store.user.mbtiRecog + store.user.mbtiJudge + store.user.mbtiTactics)
+  // console.log(userId)
+  // console.log(store.user.agreeFlag)
+  // console.log(store.user.mbtiMind + store.user.mbtiRecog + store.user.mbtiJudge + store.user.mbtiTactics)
 
   // this.$axios.put(`/user`, store.user)
   //   .then((response) => {
