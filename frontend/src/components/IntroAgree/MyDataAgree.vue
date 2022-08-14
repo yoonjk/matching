@@ -36,16 +36,25 @@
 
             <v-card>
               <v-card-title class="text-h5 grey lighten-2"
-                >Privacy Policy</v-card-title
+                >"연결고리" 서비스 이용약관</v-card-title
               >
               <v-card-text>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
-                in reprehenderit in voluptate velit esse cillum dolore eu fugiat
-                nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-                sunt in culpa qui officia deserunt mollit anim id est laborum.
+                제 1 조 (목적)
+이 약관은 주식회사 국민은행(이하 “은행”이라 합니다)과 “은행”이 제공하는 “연결고리서비
+스”(이하 “서비스”라 합니다)를 이용하는 고객(이하 ”이용자” 라 합니다) 사이의 권리, 의무 및 책
+임사항, “서비스” 제공에 관한 제반 사항을 규정함을 목적으로 합니다.제 2 조 (용어의 정의)
+① 이 약관에서 사용하는 용어의 의미는 다음과 같습니다.
+1. “서비스”라 함은 “이용자”의 “개인신용정보” 전송요구에 따라 은행, 카드, 보험, 증권, 통신
+업권 또는 공공기관 등에 분산된 이용자의 금융정보 등의 “개인신용정보”를 통합하여 제
+공하는 통합조회 서비스, 자산관리 서비스, 지출관리 서비스, 기타 “은행”이 제공하는 서비
+스를 의미합니다.
+2. “이용자”는 이 약관에 따라 “은행”과 이용 계약을 체결하고 “은행”으로부터 “서비스” 이용
+자격을 부여 받은 고객을 의미합니다.
+3. “개인신용정보”란 금융거래 등 상거래에서 개인인 신용정보주체의 신용, 거래내용, 거래능
+력 등을 판단할 수 있는 정보를 말합니다.
+4. “정보제공자”란 『신용정보의 이용 및 보호에 관한 법률』 제33조의2 조에 따라 신용정보를
+전송할 의무가 있으며, 이러한 의무에 따라 “이용자”의 “개인신용정보”를 전송하는 자를
+말합니다.
               </v-card-text>
               <v-divider></v-divider>
               <v-card-actions>
@@ -109,6 +118,9 @@
         style="height: 60px; font-size: 18px"
         >동의하고 시작</v-btn
       >
+      <v-snackbar v-model="alert" Bottom flat color="red" rounded="pill" :timeout="1500">
+                <span class="snackText"> 동의 후 진행해주세요</span>
+      </v-snackbar>
     </div>
   </div>
 </template>
@@ -126,6 +138,7 @@ export default {
     return {
       dialog: false,
       user: null,
+      alert: false,
       isAgreed: 0,
     };
   },
@@ -138,12 +151,12 @@ export default {
     },
     goNextPage() {
       if(!this.isAgreed) {
-        // TODO: implement alert
+        this.alert = true;
+        return;
       }
       else {
         this.store.user.agreeFlag = "Y"
-      // this.$router.push("/basicInfoList").catch(() => {});
-        this.$router.push("/preferenceQuestion").catch(() => {}); // TODO: change path into "/basicInfoList"
+        this.$router.push("/basicInfoList").catch(() => {});
       }
     }
   }

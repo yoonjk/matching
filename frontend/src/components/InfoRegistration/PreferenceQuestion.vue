@@ -1,23 +1,30 @@
 <template>
     <div>
-        <div class="quiz-main" v-for="(element, index) in questions.slice(a,b)" :key="index">
+        <div class="quiz-main" v-for="(element, index) in questions.slice(a,b)" :key="index" style="margin: 20px">
 
-            <v-progress-linear id="progressBar" rounded v-model="percentage" height="30" color="#7048e8" >
+            <v-progress-linear id="progressBar" rounded v-model="percentage" style="width:100%; border-radius:20px;" height="30" color="#7048e8" >
                 <strong style="color: white;"> {{ percentage }}%</strong>
             </v-progress-linear>
                 
-            <div class="box-question" style="margin: 20px">
+            <div class="box-question" >
                 <h1 id="questionText"> {{ element.question }}</h1>
             </div>
             <div id="box-answers" style="padding-bottom: 50px;">
                 <v-btn id="box-answer" v-on:click="selectLeftAnswer(element)" v-bind:color="clickedLeft ? '#666666' : '#F3F4F6'" > {{ element.suggestions[0].suggestionContent }} </v-btn>
                 <v-btn id="box-answer" v-on:click="selectRightAnswer(element)" v-bind:color="clickedRight ? '#666666' : '#F3F4F6'" > {{ element.suggestions[1].suggestionContent }} </v-btn>                
             </div>
+
+            <div style="text-align: center;"> 
+                <v-btn block id="nextBtn" @click="goNextQuestion" color="#7048e8" rounded style="height: 50px">다음</v-btn>
+                <v-snackbar v-model="alert" Bottom flat color="red" rounded="pill" :timeout="1500">
+                <span class="snackText">
+                    한 가지를 선택해주세요
+                </span>
+                </v-snackbar>
+            </div>
         </div>
 
-        <div style="text-align: center;"> 
-            <v-btn block id="nextBtn" @click="goNextQuestion" color="#7048e8" rounded style="height: 50px">다음</v-btn>
-        </div>
+        
     </div>
 
 </template>
@@ -36,6 +43,7 @@ export default {
             a: 0,
             b: 1,
             initial: 0,
+            alert: false,
             clickedLeft: false,
             clickedRight: false,
             questions: [
@@ -48,34 +56,34 @@ export default {
                     userTableColName: "petPrefer"
                 },
                 {
-                    question: "당신은 외향형 입니까? 내향형 입니까?",
+                    question: "약속이 끝나고 아무도 없는 집에 혼자 있을 때",
                     suggestions: [
-                        { suggestionContent: "E", answer: "E"},
-                        { suggestionContent: "I", answer: "I"}
+                        { suggestionContent: "어둡고 외로워", answer: "E"},
+                        { suggestionContent: "혼자만의 시간 행복해.", answer: "I"}
                     ],
                     userTableColName: "mbtiMind"
                 },
                 {
-                    question: "당신은 외향형 입니까? 내향형 입니까?",
+                    question: "사과 하면 떠오르는 것은?",
                     suggestions: [
-                        { suggestionContent: "S", answer: "S"},
-                        { suggestionContent: "N", answer: "N"}
+                        { suggestionContent: "빨갛다 맛있다", answer: "S"},
+                        { suggestionContent: "뉴턴 백설공주", answer: "N"}
                     ],
                     userTableColName: "mbtiRecog"
                 },
                 {
-                    question: "당신은 외향형 입니까? 내향형 입니까?",
+                    question: "나 교통사고 났어.",
                     suggestions: [
-                        { suggestionContent: "T", answer: "T"},
-                        { suggestionContent: "F", answer: "F"}
+                        { suggestionContent: "보험 들었어? 병원 갔어?", answer: "T"},
+                        { suggestionContent: "많이 다쳤어? 괜찮아?", answer: "F"}
                     ],
                     userTableColName: "mbtiJudge"
                 },
                 {
-                    question: "당신은 외향형 입니까? 내향형 입니까?",
+                    question: "오늘은 친한 친구들과의 약속이다. 당신의 도착시간은?",
                     suggestions: [
-                        { suggestionContent: "J", answer: "J"},
-                        { suggestionContent: "P", answer: "P"}
+                        { suggestionContent: "약속시간 10분 전", answer: "J"},
+                        { suggestionContent: "5분 지각", answer: "P"}
                     ],
                     userTableColName: "mbtiTactics"
                 }
@@ -105,8 +113,8 @@ export default {
         },
         goNextQuestion() {
             if(this.clickedLeft === false && this.clickedRight === false) {
-                // TODO: implement alert
-
+                this.alert = true;
+                return;
             } else {
                 this.clickedLeft = false
                 this.clickedRight = false
@@ -132,8 +140,12 @@ export default {
 
 <style lang="scss" scoped>
 
+
 #progressBar {
     margin-top: 80px;
+    display: flex;
+    justify-content:center;
+    align-items: center;
 }
 
 #questionText{
@@ -161,6 +173,7 @@ export default {
 
 #nextBtn {
     margin-top: 50px;
+    color: white;
 }
 
 </style>

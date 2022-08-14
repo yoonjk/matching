@@ -1,10 +1,10 @@
 <template>
     <div>
 
-        <div class="quiz-main" v-for="(element, index) in questionList.slice(a,b)" :key="index">
+        <div class="quiz-main" v-for="(element, index) in questionList.slice(a,b)" :key="index" style="margin: 20px">
             <div id="steps">
                 <v-avatar v-if="a >= 1" color="#DDDDDD" style="margin-right:10px;"> <v-icon dark> mdi-check </v-icon></v-avatar>
-                <v-avatar v-else id="step1" color="#845ef7" style="margin-right:10px;">1</v-avatar>
+                <v-avatar v-else id="step1" color="#845ef7" style="margin-right:10px; ">1</v-avatar>
 
                 <v-avatar v-if="a >= 2" color="#DDDDDD" style="margin-right:10px;"> <v-icon dark> mdi-check </v-icon></v-avatar>
                 <v-avatar v-else id="step2" color="#845ef7" style="margin-right:10px;">2</v-avatar>
@@ -22,10 +22,9 @@
                 <v-btn id="box-answer" v-on:click="selectLeftAnswer" v-bind:color="clickedLeft ? '#666666' : '#F3F4F6'" > {{ element.answerContent1 }} </v-btn>
                 <v-btn id="box-answer" v-on:click="selectRightAnswer" v-bind:color="clickedRight ? '#666666' : '#F3F4F6'" > {{ element.answerContent2 }} </v-btn>
             </div>
-        </div>
-        
-        <div style="text-align: center;"> 
+            <div style="text-align: center;"> 
             <v-btn block id="nextBtn" @click="goNextQuestion" color="#7048e8" rounded >다음</v-btn>
+        </div>
         </div>
         
     </div>
@@ -118,6 +117,10 @@ export default {
     border: 1px solid colors.$GRAY0;
     margin-bottom: 20px;
     border-radius: 15px;
+}
+
+#nextBtn {
+    color:white;
 }
 
 </style>
