@@ -137,9 +137,14 @@ export default {
       this.dialog = !this.dialog
     },
     goNextPage() {
-      this.store.user.agreeFlag = "Y"
+      if(!this.isAgreed) {
+        // TODO: implement alert
+      }
+      else {
+        this.store.user.agreeFlag = "Y"
       // this.$router.push("/basicInfoList").catch(() => {});
-      this.$router.push("/preferenceQuestion").catch(() => {}); // TODO: change path into "/basicInfoList"
+        this.$router.push("/preferenceQuestion").catch(() => {}); // TODO: change path into "/basicInfoList"
+      }
     }
   }
 };

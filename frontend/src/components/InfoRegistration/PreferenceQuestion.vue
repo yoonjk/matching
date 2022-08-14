@@ -104,15 +104,22 @@ export default {
             this.store.user[object.userTableColName] = object.suggestions[1].answer
         },
         goNextQuestion() {
-            this.clickedLeft = false
-            this.clickedRight = false
-            if(this.b >= this.questions.length) {
-                setUser()
-                this.$router.push("/").catch(() => {});
+            if(this.clickedLeft === false && this.clickedRight === false) {
+                // TODO: implement alert
+
             } else {
-                this.a++;
-                this.b++;
+                this.clickedLeft = false
+                this.clickedRight = false
+                if(this.b >= this.questions.length) {
+                    setUser()
+                    this.$router.push("/").catch(() => {});
+                } else {
+                    this.a++;
+                    this.b++;
+                }
             }
+
+            
         }
     },
     computed: {
