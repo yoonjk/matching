@@ -1,4 +1,6 @@
-package com.matching.kb40.chatting.chattingserver.dto;
+package com.matching.kb40.chatting.kafkaserver.dto;
+
+import org.apache.ibatis.type.Alias;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -9,6 +11,7 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
+@Alias("ChatDto")
 public class ChatDto {
     private Long chatId;           // auto_increment
     private Long matchId;

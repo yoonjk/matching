@@ -1,12 +1,13 @@
-package com.matching.kb40.chatting.chattingserver;
+package com.matching.kb40.chatting.kafkaserver;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class ChattingServerApplication {
+public class KafkaServerApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(ChattingServerApplication.class, args);
+		SpringApplication.run(KafkaServerApplication.class, args);
 	}
+
 }
