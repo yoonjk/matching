@@ -1,5 +1,15 @@
 <template>
     <div>
+        <v-dialog v-model="loading" fullscreen full-width>
+            <v-container fluid fill-height style="background-color: rgba(255, 255, 255, 0.5);">
+                <v-layout justify-center align-center>
+                <v-progress-circular
+                    indeterminate
+                    color="primary">
+                </v-progress-circular>
+                </v-layout>
+            </v-container>
+        </v-dialog>
 
         <div class="quiz-main" v-for="(element, index) in questionList.slice(a,b)" :key="index" style="margin: 20px">
             <div id="steps">
@@ -36,6 +46,7 @@ export default {
         return {
             a: 0,
             b: 1,
+            loading: false,
             clickedLeft: false,
             clickedRight: false,
             questionList: [],
@@ -58,9 +69,16 @@ export default {
         goNextQuestion() {
             this.clickedLeft = false
             this.clickedRight = false
+
             if(this.b >= 3) {
-                this.$router.push("/mindMatchingList").catch(() => {});
-            } else {
+                this.loading = true
+                // TODO: call API and get response from AI API
+                setTimeout(() => {
+                    this.loading = false
+                    this.$router.push("/mindMatchingList").catch(() => {});
+                }, 3000);
+            } 
+            else {
                 this.a++;
                 this.b++;
             }

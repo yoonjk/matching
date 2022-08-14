@@ -120,10 +120,8 @@ export default {
         }
     },
     created() {
-        // 
-        // TODO: get response from AI API
         // TODO: assign reponse to people array
-    },
+    }
 }
 </script>
 
