@@ -30,7 +30,7 @@ public class ChattingController {
 	private String updateTopic;
 
 	@MessageMapping("/chat.sendMessage/{matchId}")
-    @SendTo("/topic/{matchId}}")
+    @SendTo("/topic/{matchId}")
     public NewChat sendMessage(@Payload NewChat newChat, @DestinationVariable Long matchId) {
 		log.info("sendMessage로 들어옴!!!!");
 		log.info(newChat.toString());
@@ -41,7 +41,7 @@ public class ChattingController {
     }
 
     @MessageMapping("/chat.updateReadMessage/{matchId}")
-    @SendTo("/topic/{matchId}}")
+    @SendTo("/topic/{matchId}")
     public ReadChat updateReadMessage(@Payload ReadChat readChat, @DestinationVariable Long matchId){
 		log.info("updateReadMessage로 들어옴!!!!");
 		log.info(readChat.toString());
