@@ -1,4 +1,4 @@
-package com.matching.kb40.chatting.chattingserver.model;
+package com.matching.kb40.chatting.kafkaserver.model;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -9,7 +9,9 @@ import lombok.ToString;
 @Setter
 @ToString
 @NoArgsConstructor
-public class ReadChat {
+public class NewChat {
     private Long matchId;
     private String userId;
+    private String content;
+    private String createdDate;
 }
