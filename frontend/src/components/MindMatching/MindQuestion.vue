@@ -1,10 +1,20 @@
 <template>
     <div>
+        <v-dialog v-model="loading" fullscreen full-width>
+            <v-container fluid fill-height style="background-color: rgba(255, 255, 255, 0.5);">
+                <v-layout justify-center align-center>
+                <v-progress-circular
+                    indeterminate
+                    color="primary">
+                </v-progress-circular>
+                </v-layout>
+            </v-container>
+        </v-dialog>
 
-        <div class="quiz-main" v-for="(element, index) in questionList.slice(a,b)" :key="index">
+        <div class="quiz-main" v-for="(element, index) in questionList.slice(a,b)" :key="index" style="margin: 20px">
             <div id="steps">
                 <v-avatar v-if="a >= 1" color="#DDDDDD" style="margin-right:10px;"> <v-icon dark> mdi-check </v-icon></v-avatar>
-                <v-avatar v-else id="step1" color="#845ef7" style="margin-right:10px;">1</v-avatar>
+                <v-avatar v-else id="step1" color="#845ef7" style="margin-right:10px; ">1</v-avatar>
 
                 <v-avatar v-if="a >= 2" color="#DDDDDD" style="margin-right:10px;"> <v-icon dark> mdi-check </v-icon></v-avatar>
                 <v-avatar v-else id="step2" color="#845ef7" style="margin-right:10px;">2</v-avatar>
@@ -16,16 +26,15 @@
             <h1 id="guideText">매칭 전 몇 가지만 확인할게요!</h1>
             
             <div class="box-question">
-                <h1 id="questionText" style="font-size: 24px"> {{ element.questionContent }}</h1>
+                <h1 id="questionText" style="font-size: 20px"> {{ element.questionContent }}</h1>
             </div>
             <div id="box-answers" style="padding-bottom: 50px;">
                 <v-btn id="box-answer" v-on:click="selectLeftAnswer" v-bind:color="clickedLeft ? '#666666' : '#F3F4F6'" > {{ element.answerContent1 }} </v-btn>
                 <v-btn id="box-answer" v-on:click="selectRightAnswer" v-bind:color="clickedRight ? '#666666' : '#F3F4F6'" > {{ element.answerContent2 }} </v-btn>
             </div>
-        </div>
-        
-        <div style="text-align: center;"> 
+            <div style="text-align: center;"> 
             <v-btn block id="nextBtn" @click="goNextQuestion" color="#7048e8" rounded >다음</v-btn>
+        </div>
         </div>
         
     </div>
@@ -37,6 +46,7 @@ export default {
         return {
             a: 0,
             b: 1,
+            loading: false,
             clickedLeft: false,
             clickedRight: false,
             questionList: [],
@@ -59,9 +69,16 @@ export default {
         goNextQuestion() {
             this.clickedLeft = false
             this.clickedRight = false
+
             if(this.b >= 3) {
-                this.$router.push("/mindMatchingList").catch(() => {});
-            } else {
+                this.loading = true
+                // TODO: call API and get response from AI API
+                setTimeout(() => {
+                    this.loading = false
+                    this.$router.push("/mindMatchingList").catch(() => {});
+                }, 3000);
+            } 
+            else {
                 this.a++;
                 this.b++;
             }
@@ -92,6 +109,18 @@ export default {
     color: white;
 }
 
+#step1 {
+    color: white;
+}
+
+#step2 {
+    color: white;
+}
+
+#step3 {
+    color: white;
+}
+
 #guideText{
     text-align: center;
     font-weight: normal;
@@ -109,15 +138,19 @@ export default {
 }
 
 #box-answer {
-    width:160px;
+    width: 45%;
     height:180px;
     list-style: none;
     line-height: 2;
-    margin-left: 10px;
-    margin-right: 10px;
+    margin-left: 5px;
+    margin-right: 5px;
     border: 1px solid colors.$GRAY0;
     margin-bottom: 20px;
     border-radius: 15px;
+}
+
+#nextBtn {
+    color:white;
 }
 
 </style>

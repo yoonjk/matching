@@ -18,7 +18,7 @@ export default new VueRouter({
     mode: "history",
     routes: [
         {
-            path: "/",
+            path: "/m",
             component: Main
         },
         {
