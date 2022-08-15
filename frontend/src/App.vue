@@ -25,8 +25,8 @@ export default {
     //
   }),
   created() {
-    loadUser("user1");
-    loadMydata("user1");
+    loadUser("user5");
+    loadMydata("user5");
   },
 };
 </script>
@@ -42,6 +42,6 @@ export default {
 
 #app {
   font-family: "S-CoreDream-5Medium";
-  background-color: colors.$GRAY2;
+  // background-color: colors.$GRAY2;
 }
 </style>

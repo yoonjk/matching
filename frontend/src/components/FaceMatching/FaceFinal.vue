@@ -25,10 +25,23 @@
 </template>
 
 <script>
+import dayjs from "dayjs";
+import { useAppStore } from '../../store/userState'
+
 export default {
+    setup(){
+        const store = useAppStore()
+        return {store}
+    },
     data(){
         return{
-            mydata:{}
+            mydata:{},
+            match:{
+                sender:'',
+                receiver:'',
+                activeFlag:'',
+                createdData:''
+            }
         }
     },
     props:{
@@ -45,7 +58,7 @@ export default {
                     console.log(this.mydata)
                 })
                 .catch((err) => {
-                    console.log(err.response);
+                    console.log(err.response)
                 });
         },
         displayDetail() {
@@ -55,7 +68,17 @@ export default {
             this.$router.push("/faceSelect").catch(() => {});
         },
         goChat(){
-            console.log("goChat")
+            this.match.sender=this.store.user.userId
+            this.match.receiver=this.user.userId
+            this.match.activeFlag = '0'
+            this.match.createdData = dayjs().format("YYYYMMDDHHmmss")
+
+            this.$axios.post(`/matching/request`, this.match)
+            .then(()=>{
+                console.log("저장되었습니다.")
+            }).catch((err)=>{
+                console.log(err.response)
+            })
         },
         getProfile(i){
             return require("@/assets/" + i)

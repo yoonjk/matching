@@ -51,11 +51,23 @@
     </v-container>
 </template>
 <script>
+import dayjs from "dayjs";
+import { useAppStore } from '../../store/userState'
 
 export default {
+    setup(){
+        const store = useAppStore()
+        return {store}
+    },
     data() {
         return{
-            hobbies:[]
+            hobbies:[],
+            match:{
+                sender:'',
+                receiver:'',
+                activeFlag:'',
+                createdData:''
+            }
         }
     },
     props:{
@@ -68,7 +80,17 @@ export default {
     },
     methods :{
         goChat(){
-            console.log(this.userId)
+            this.match.sender=this.store.user.userId
+            this.match.receiver=this.user.userId
+            this.match.activeFlag = '0'
+            this.match.createdData = dayjs().format("YYYYMMDDHHmmss")
+
+            this.$axios.post(`/matching/request`, this.match)
+            .then(()=>{
+                console.log("저장되었습니다.")
+            }).catch((err)=>{
+                console.log(err.response)
+            })
         },
         addComma(price) {
             price = price + ""

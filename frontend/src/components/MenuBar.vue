@@ -56,7 +56,7 @@
         <div>{{user.name}} 님</div>
         </div>
           <v-col class="d-flex align-center" style="justify-content: flex-end;">
-          <v-icon style="color:black">mdi-bell</v-icon>
+          <v-icon style="color:black; margin-right:5px;" @click="goRequestList">mdi-bell</v-icon>
             <v-app-bar-nav-icon
                 v-if="!$vuetify.breakpoint.mdAndUp"
                 @click.stop="drawer = !drawer"
@@ -149,6 +149,9 @@ export default {
   methods:{
     getImg(filename){
       return require("@/assets/"+filename)
+    },
+    goRequestList(){
+      this.$router.push("/requestList").catch(() => {});
     }
   }
 };
