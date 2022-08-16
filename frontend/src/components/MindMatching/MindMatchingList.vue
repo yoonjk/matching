@@ -6,7 +6,7 @@
         <div fluid style="margin-top: 30px;">
             <v-row dense id="main">
                 <v-col v-for="(person, index) in people.slice(0,1)" :key="index" cols="12" xs="12">
-                    <v-card id="mainCard"  v-on:click="goDetailPage(person.userId)">
+                    <v-card id="mainCard">
                         <div id="percentLabel" style="background-color: #b197fc;" >{{ person.fitPercent }}% 매칭</div>
                         <div style="display:flex;width:100%;padding-left:20px;">
                             <div style="width:60%"><img id="topImage" :src="getProfile(index)" @click="goDetailPage(person.userId)"/></div>
@@ -24,7 +24,7 @@
            
             <v-row dense id="sub">
             <v-col v-for="(person, index) in people.slice(1)" :key="index" cols="6" xs="6">
-                <v-card id="subCard"  v-on:click="goDetailPage(person.userId)">
+                <v-card id="subCard">
                 <div id="percentLabel" style="background-color: #b197fc; ">{{ person.fitPercent }}% 매칭</div>
                 <img id="bottomImages" :src="getProfile(index+1)" @click="goDetailPage(person.userId)"/>
                 <div rounded id="nameLabel">{{person.name}}</div>
@@ -199,6 +199,7 @@ export default {
             this.$router.push("/mindQuestion").catch(() => {});
         },
         async goDetailPage(userId) {
+
             // fetch user and myData object for finalUser
             this.finalUser = await fetchUser(userId)
             this.finalMyData = await fetchMyData(userId)
