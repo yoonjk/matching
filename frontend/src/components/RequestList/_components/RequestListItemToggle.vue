@@ -32,7 +32,7 @@ export default {
   margin: 24px auto;
   border-radius: 24px;
   /* border: 0.5px solid #ced4da; */
-  background-color: #fff;
+  background-color: #f3f0ff;
 }
 
 button {
@@ -53,7 +53,7 @@ button {
   height: 36px;
   top: 0;
   left: 0;
-  background-color: #8452f7;
+  background-color: #845ef7;
   border-radius: 24px;
   z-index: 0;
 }
@@ -64,7 +64,7 @@ button {
   height: 36px;
   top: 0;
   left: 156px;
-  background-color: #7950f2;
+  background-color: #845ef7;
   border-radius: 24px;
   z-index: 0;
 }

@@ -1,26 +1,27 @@
 <template>
     <div>
-        <div class="quiz-main" v-for="(element, index) in questions.slice(a,b)" :key="index" style="margin-left: 20px; margin-right: 20px">
+        <MenuBar page="PreferenceQuestion" />
+        <div class="quiz-main" v-for="(element, index) in questions.slice(a,b)" :key="index" style="margin-left: 20px; margin-right: 20px; height:100%;">
 
-            <v-progress-linear id="progressBar" rounded v-model="percentage" style="width:100%; border-radius:20px;" height="30" color="#7048e8" >
+            <v-progress-linear id="progressBar" rounded v-model="percentage" style="width:100%; border-radius:20px;" height="30" color="#8452f7" >
                 <strong style="color: white;"> {{ percentage }}%</strong>
             </v-progress-linear>
                 
-            <div class="box-question" >
+            <div style="height:160px;" >
                 <h1 id="questionText"> {{ element.question }}</h1>
             </div>
-            <div id="box-answers" style="padding-bottom: 50px;">
-                <v-btn id="box-answer" v-on:click="selectLeftAnswer(element)" v-bind:color="clickedLeft ? '#666666' : '#F3F4F6'" > {{ element.suggestions[0].suggestionContent }} </v-btn>
-                <v-btn id="box-answer" v-on:click="selectRightAnswer(element)" v-bind:color="clickedRight ? '#666666' : '#F3F4F6'" > {{ element.suggestions[1].suggestionContent }} </v-btn>                
+            <div id="box-answers">
+                <div id="box-answer" @click="selectLeftAnswer(element)" :class="{'selected':clickedLeft, 'no-selected':!clickedLeft}" > {{ element.suggestions[0].suggestionContent }} </div>
+                <div id="box-answer" @click="selectRightAnswer(element)" :class="{'selected':clickedRight, 'no-selected':!clickedRight}" > {{ element.suggestions[1].suggestionContent }} </div>                
             </div>
 
-            <div style="text-align: center;"> 
-                <v-btn block id="nextBtn" @click="goNextQuestion" color="#7048e8" rounded style="height: 50px">다음</v-btn>
-                <v-snackbar v-model="alert" Bottom flat color="red" rounded="pill" :timeout="1500">
+            <div style="text-align: center; "> 
+                <v-btn text :disabled=check() dark @click="goNextQuestion" rounded style="height: 50px; font-size:24px;width:250px; background-color: #845ef7;">다음</v-btn>
+                <!-- <v-snackbar v-model="alert" Bottom flat color="red" rounded="pill" :timeout="1500">
                 <span class="snackText">
                     한 가지를 선택해주세요
                 </span>
-                </v-snackbar>
+                </v-snackbar> -->
             </div>
         </div>
 
@@ -32,8 +33,12 @@
 <script>
 import { useAppStore } from '../../store/userState'
 import { setUser } from '../../worker/user';
+import MenuBar from "../MenuBar.vue";
 
 export default {
+    components:{
+        MenuBar
+    },
     setup() {
         const store = useAppStore();
         return { store }
@@ -43,7 +48,7 @@ export default {
             a: 0,
             b: 1,
             initial: 0,
-            alert: false,
+            // alert: false,
             clickedLeft: false,
             clickedRight: false,
             questions: [
@@ -59,7 +64,7 @@ export default {
                     question: "약속이 끝나고 아무도 없는 집에 혼자 있을 때",
                     suggestions: [
                         { suggestionContent: "어둡고 외로워", answer: "E"},
-                        { suggestionContent: "혼자만의 시간 행복해.", answer: "I"}
+                        { suggestionContent: "혼자만의 시간 행복해", answer: "I"}
                     ],
                     userTableColName: "mbtiMind"
                 },
@@ -113,21 +118,25 @@ export default {
         },
         goNextQuestion() {
             if(this.clickedLeft === false && this.clickedRight === false) {
-                this.alert = true;
-                return;
+                // this.alert = true;
+                // return;
             } else {
                 this.clickedLeft = false
                 this.clickedRight = false
                 if(this.b >= this.questions.length) {
                     setUser()
-                    this.$router.push("/").catch(() => {});
+                    this.$router.push("/m").catch(() => {});
                 } else {
                     this.a++;
                     this.b++;
                 }
             }
-
-            
+        },
+        check(){
+            if(!this.clickedLeft && !this.clickedRight){
+                return true
+            }else
+                return false
         }
     },
     computed: {
@@ -150,32 +159,43 @@ export default {
 
 #questionText{
     text-align: center;
-    margin-top: 50px;
+    padding-top: 50px;
     padding-bottom:50px;
     font-size: 24px;
 }
 
 #box-answers {
     text-align: center;
+    padding-bottom: 100px;
+    padding-top: 50px;
+    display:flex; 
+    justify-content: center;
 }
 
 #box-answer {
-    width:150px;
-    height:150px;
-    list-style: none;
-    line-height: 2;
-    margin-left: 10px;
-    margin-right: 10px;
-    border: 1px solid #DDDDDD;
-    border-radius: 15px;
-    font-size: 12px;
-    cursor: pointer;
+    width:170px;
+    height:170px;
+    margin-left: 5px;
+    margin-right: 5px;
+    border: 1px solid ;
+    // border-radius: 15px;
+    word-break:break-all;
+    font-size:20px;
+    padding:2px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
 }
 
 #nextBtn {
-    margin-top: 50px;
     color: white;
     font-size: 24px;
 }
 
+.selected{
+    background-color:#666666;
+}
+.no-selected{
+    background-color:#f3f0ff;
+}
 </style>

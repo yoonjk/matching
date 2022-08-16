@@ -1,8 +1,8 @@
 <template>
   <div class="screen">
+    <MenuBar page="RequestList" />
     <main>
-      <h1>매칭 요청 목록</h1>
-      <p>지난 요청 목록을 모두 볼 수 있어요.</p>
+      <!-- <p>지난 요청 목록을 모두 볼 수 있어요.</p> -->
       <RequestListItemToggle @selectedTab="setTab"/>
       <ul v-if="this.selectedTab" >
         <RequestListItem
@@ -27,6 +27,7 @@
 <script>
 import RequestListItem from "./_components/RequestListItem.vue";
 import RequestListItemToggle from "./_components/RequestListItemToggle.vue";
+import MenuBar from '../MenuBar.vue'
 import { useAppStore } from '../../store/userState'
 
 export default {
@@ -46,22 +47,22 @@ export default {
   components: {
     RequestListItem,
     RequestListItemToggle,
+    MenuBar
   },
   methods:{
     setTab(val){
       this.selectedTab = val
-      console.log(this.selectedTab)
     }
   },
-  created() {
-    this.$axios.get(`/matching/receivers/${this.store.user.userId}`)
+  async created() {
+    await this.$axios.get(`/matching/receivers/${this.store.user.userId}`)
     .then((response)=>{
       this.receiverItems = response.data
     }).catch((err)=>{
       console.log(err.response)
     })
 
-    this.$axios.get(`/matching/senders/${this.store.user.userId}`)
+    await this.$axios.get(`/matching/senders/${this.store.user.userId}`)
     .then((response)=>{
       this.senderItems = response.data
     }).catch((err)=>{
@@ -95,6 +96,6 @@ ul {
   width: 90%;
   /* position: relative; */
   margin: 0 auto;
-  background-color: violet;
+  // background-color: violet;
 }
 </style>
