@@ -1,19 +1,17 @@
 <template>
     <div>
         <MenuBar page="MindQuestion" />
-        
-
         <div fluid style="margin-top: 30px;">
             <v-row dense id="main">
                 <v-col v-for="(person, index) in people.slice(0,1)" :key="index" cols="12" xs="12">
-                    <v-card id="mainCard"  v-on:click="goDetailPage(person.userId)">
+                    <v-card id="mainCard">
                         <div id="percentLabel" style="background-color: #b197fc;" >{{ person.fitPercent }}% 매칭</div>
                         <div style="display:flex;width:100%;padding-left:20px;">
                             <div style="width:60%"><img id="topImage" :src="getProfile(index)" @click="goDetailPage(person.userId)"/></div>
                             <div style="width:40%; display:flex; justify-content: center; align-items: center;">
                             <v-col>
-                                <v-btn rounded large style="font-size:17px;">상세정보</v-btn>
-                                <v-btn rounded large style="margin-top:20px; font-size:17px;">대화요청</v-btn>
+                                <v-btn rounded large style="font-size:17px;" @click="goDetailPage(person.userId)">상세정보</v-btn>
+                                <v-btn rounded large style="margin-top:20px; font-size:17px;" @click="goChat(person.userId)">대화요청</v-btn>
                             </v-col>
                             </div>
                         </div>
@@ -45,6 +43,7 @@
 import { useAppStore } from '../../store/userState'
 import { fetchUser, fetchMyData } from '../../worker/user';
 import MenuBar from "../MenuBar.vue";
+import dayjs from "dayjs";
 
 export default {
     components : {
@@ -190,7 +189,13 @@ export default {
                     "investProp": "저위험",
                     "fitPercent": "86"
                 }
-            ]
+            ],
+            match:{
+                sender:'',
+                receiver:'',
+                activeFlag:'',
+                createdDate:''
+            }
         }
     },
     methods: {
@@ -207,6 +212,20 @@ export default {
         },
         getProfile(i){
             return require("@/assets/" + this.people[i].profileFilename)
+        },
+        goChat(userId){
+            // console.log(this.store.user.userId)
+            this.match.sender=this.store.user.userId
+            this.match.receiver=userId
+            this.match.activeFlag = '0'
+            this.match.createdDate = dayjs().format("YYYYMMDDHHmmss")
+            console.log(this.store.user.userId +" "+userId)
+            this.$axios.post(`/matching/request`, this.match)
+            .then(()=>{
+                console.log("요청하였습니다.")
+            }).catch((err)=>{
+                console.log(err.response)
+            })
         }
     },
     beforeMount() {
