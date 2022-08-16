@@ -36,8 +36,6 @@ export default {
       if(filename != undefined) return require("@/assets/"+filename)
     },
   },
-  created() {
-  },
 };
 </script>
 
@@ -54,15 +52,16 @@ li {
   list-style: none;
   border-radius: 15px;
   // background-color: #f3f0ff;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
   border:1px solid;
   transition: height 1s;
   cursor: pointer;
   transition: background-color 100ms;
   
 
-  &:hover {
-    // background-color: colors.$GRAY0;
-  }
+  // &:hover {
+  //   background-color: colors.$GRAY0;
+  // }
 }
 
 /* li:hover {
@@ -74,6 +73,8 @@ li {
   align-items: center;
   height: 78px;
   margin-bottom:10px;
+  // border:1px solid;
+  // border-radius:15px;
 }
 
 .profile {
