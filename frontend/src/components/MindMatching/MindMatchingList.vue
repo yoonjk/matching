@@ -7,7 +7,7 @@
             <v-row dense id="main">
                 <v-col v-for="(person, index) in people.slice(0,1)" :key="index" cols="12" xs="12">
                     <v-card id="mainCard"  v-on:click="goDetailPage(person.userId)">
-                        <div id="percentLabel" style="background-color: #b197fc;" >100% 매칭</div>
+                        <div id="percentLabel" style="background-color: #b197fc;" >{{ person.fitPercent }}% 매칭</div>
                         <div style="display:flex;width:100%;padding:20px;">
                             <div style="width:60%"><img id="topImage" :src="getProfile(index)" @click="goDetailPage(person.userId)"/></div>
                             <div style="width:40%">
@@ -22,8 +22,8 @@
             <v-row dense id="sub">
             <v-col v-for="(person, index) in people.slice(1)" :key="index" cols="6" xs="6">
                 <v-card id="subCard"  v-on:click="goDetailPage(person.userId)">
-                <div id="percentLabel" style="background-color: #b197fc; ">90% 매칭</div>
-                <img id="bottomImages" :src="getProfile(index)" @click="goDetailPage(person.userId)"/>
+                <div id="percentLabel" style="background-color: #b197fc; ">{{ person.fitPercent }}% 매칭</div>
+                <img id="bottomImages" :src="getProfile(index+1)" @click="goDetailPage(person.userId)"/>
                 <div rounded id="nameLabel">{{person.name}}</div>
                 </v-card>
             </v-col>
@@ -200,7 +200,7 @@ export default {
             this.finalUser = await fetchUser(userId)
             this.finalMyData = await fetchMyData(userId)
 
-            this.$router.push({name: 'MatchDetail', params: {user: this.finalUser, mydata : this.finalMyData}})
+            this.$router.push({name: 'MatchDetail', params: {user: this.finalUser, mydata : this.finalMyData}}).catch(() => {});
         },
         getProfile(i){
             return require("@/assets/" + this.people[i].profileFilename)
