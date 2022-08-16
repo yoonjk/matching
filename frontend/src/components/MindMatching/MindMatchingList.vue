@@ -7,22 +7,22 @@
         <v-container fluid style="margin-top: 30px;">
             <v-row dense id="main">
             <v-col v-for="(person, index) in people.slice(0,1)" :key="index" cols="12" xs="12">
-                <v-card id="mainCard" class="pa-3" outlined v-on:click="goDetailPage" style="border:5px solid #b197fc;" color="#FFFFFF">
-                <div id="percentLabel" style="background-color: #b197fc; " >100% match</div>
-                <img id="topImage" :src="getProfile(index)" @click="goDetailPage"/>
+                <v-card id="mainCard" class="pa-3" outlined v-on:click="goDetailPage(person.userId)" style="border:5px solid #b197fc;" color="#FFFFFF">
+                <div id="percentLabel" style="background-color: #b197fc; " > {{person.fitPercent}}% match  </div>
+                <img id="topImage" :src="getProfile(index)" @click="goDetailPage(person.userId)"/>
                 <v-spacer></v-spacer>
-                <v-card rounded id="nameLabel">{{person.name}}, {{person.age}}세</v-card>
+                <v-card rounded id="nameLabel">{{person.name}}</v-card>
                 </v-card>
             </v-col>
             </v-row>
            
             <v-row dense id="sub">
             <v-col v-for="(person, index) in people.slice(1)" :key="index" cols="6" xs="6">
-                <v-card id="subCard" class="pa-3" outlined v-on:click="goDetailPage" style=" border:5px solid #b197fc; " color="#FFFFFF">
-                <div id="percentLabel" style="background-color: #b197fc; ">100% match</div>
-                <img id="bottomImages" :src="getProfile(index)" @click="goDetailPage"/>
+                <v-card id="subCard" class="pa-3" outlined v-on:click="goDetailPage(person.userId)" style=" border:5px solid #b197fc; " color="#FFFFFF">
+                <div id="percentLabel" style="background-color: #b197fc; "> {{person.fitPercent}}% match </div>
+                <img id="bottomImages" :src="getProfile(index)" @click="goDetailPage(person.userId)"/>
                 <v-spacer></v-spacer>
-                <v-card rounded id="nameLabel">{{person.name}}, {{person.age}}세</v-card>
+                <v-card rounded id="nameLabel">{{person.name}}</v-card>
                 </v-card>
             </v-col>
             </v-row>
@@ -34,6 +34,7 @@
 
 <script>
 import { useAppStore } from '../../store/userState'
+import { fetchUser, fetchMyData } from '../../worker/user';
 
 export default {
     setup(){
@@ -50,58 +51,131 @@ export default {
             myDatas: [],
             people: [
                 {
-                    name: "김국은1",
-                    age: "20",
-                    userId: "1",
-                    profileFilename: "w_2419.jpg"
+                    "userId": "user1",
+                    "mydataId": "user1",
+                    "job": "coder",
+                    "mbtiMind": "I",
+                    "mbtiRecog": "N",
+                    "mbtiJudge": "F",
+                    "mbtiTactics": "P",
+                    "userPoint": 20000,
+                    "petPrefer": "N",
+                    "nickname": "위대한 고양이",
+                    "agreeFlag": "Y",
+                    "hobby": "재테크/투자",
+                    "profileFilename": "m_1000.jpg",
+                    "name": "박상현",
+                    "gender": "M",
+                    "age": 28,
+                    "address": "서울시 서초구 방배동",
+                    "assets": "20000000",
+                    "consumePtn1": "투자",
+                    "consumePtn2": "식비",
+                    "consumePtn3": "교통",
+                    "investProp": "고위험",
+                    "fitPercent": "100"
                 },
                 {
-                    name: "위대한 고양이",
-                    age: "21",
-                    userId: "2",
-                    profileFilename: "w_2420.jpg"
+                    "userId": "user2",
+                    "mydataId": "user2",
+                    "job": "IT",
+                    "mbtiMind": "I",
+                    "mbtiRecog": "N",
+                    "mbtiJudge": "F",
+                    "mbtiTactics": "P",
+                    "userPoint": 200000,
+                    "petPrefer": "N",
+                    "nickname": "위대한 강아지",
+                    "agreeFlag": "Y",
+                    "hobby": "게임/코딩/프로그래밍",
+                    "profileFilename": "m_1002.jpg",
+                    "name": "변상운",
+                    "gender": "M",
+                    "age": 26,
+                    "address": "서울시 강남구 청담동",
+                    "assets": "100000000",
+                    "consumePtn1": "식비",
+                    "consumePtn2": "투자",
+                    "consumePtn3": "패션/쇼핑",
+                    "investProp": "중위험",
+                    "fitPercent": "97"
                 },
                 {
-                    name: "김국은3",
-                    age: "22",
-                    userId: "3",
-                    profileFilename: "w_2423.jpg"
+                    "userId": "user3",
+                    "mydataId": "user3",
+                    "job": "학생",
+                    "mbtiMind": "I",
+                    "mbtiRecog": "N",
+                    "mbtiJudge": "F",
+                    "mbtiTactics": "J",
+                    "userPoint": 69000,
+                    "petPrefer": "Y",
+                    "nickname": "위대한 거북이",
+                    "agreeFlag": "Y",
+                    "hobby": "스포츠/피트니스",
+                    "profileFilename": "m_1003.jpg",
+                    "mydataId": "user3",
+                    "name": "테스터3",
+                    "gender": "M",
+                    "age": 31,
+                    "address": "서울특별시 송파구 잠실동",
+                    "assets": "80000000",
+                    "consumePtn1": "여행/숙박",
+                    "consumePtn2": "패션/쇼핑",
+                    "consumePtn3": "투자",
+                    "investProp": "저위험",
+                    "fitPercent": "94"
                 },
                 {
-                    name: "김국은4",
-                    age: "23",
-                    userId: "4",
-                    profileFilename: "w_2424.jpg"
+                    "userId": "user4",
+                    "mydataId": "user4",
+                    "job": "교수",
+                    "mbtiMind": "E",
+                    "mbtiRecog": "S",
+                    "mbtiJudge": "T",
+                    "mbtiTactics": "J",
+                    "userPoint": 44000,
+                    "petPrefer": "Y",
+                    "nickname": "위대한 토끼",
+                    "agreeFlag": "Y",
+                    "hobby": "음악/악기",
+                    "profileFilename": "m_1005.jpg",
+                    "mydataId": "user4",
+                    "name": "테스터4",
+                    "gender": "M",
+                    "age": 30,
+                    "address": "서울특별시 송파구 마천동",
+                    "assets": "150000000",
+                    "consumePtn1": "문화/여가",
+                    "consumePtn2": "뷰티/미용",
+                    "consumePtn3": "경조/선물",
+                    "investProp": "초저위험",
+                    "fitPercent": "90"
                 },
                 {
-                    name: "김국은5",
-                    age: "24",
-                    userId: "5",
-                    profileFilename: "w_2427.jpg"
-                },
-                {
-                    name: "김국은6",
-                    age: "25",
-                    userId: "6",
-                    profileFilename: "w_2435.jpg"
-                },
-                {
-                    name: "김국은7",
-                    age: "26",
-                    userId: "7",
-                    profileFilename: "w_2437.jpg"
-                },
-                {
-                    name: "김국은8",
-                    age: "27",
-                    userId: "8",
-                    profileFilename: "w_2438.jpg"
-                },
-                {
-                    name: "김국은9",
-                    age: "28",
-                    userId: "9",
-                    profileFilename: "w_2441.jpg"
+                    "userId": "user5",
+                    "mydataId": "user5",
+                    "job": "은행원",
+                    "mbtiMind": "I",
+                    "mbtiRecog": "N",
+                    "mbtiJudge": "F",
+                    "mbtiTactics": "P",
+                    "userPoint": 12000,
+                    "petPrefer": "N",
+                    "nickname": "위대한 뱀",
+                    "agreeFlag": "Y",
+                    "hobby": "어학",
+                    "profileFilename": "w_2415.jpg",
+                    "name": "테스터5",
+                    "gender": "W",
+                    "age": 26,
+                    "address": "서울특별시 서초구 반포동",
+                    "assets": "380000000",
+                    "consumePtn1": "교육/학습",
+                    "consumePtn2": "문화/여가",
+                    "consumePtn3": "식비",
+                    "investProp": "저위험",
+                    "fitPercent": "86"
                 }
             ]
         }
@@ -111,16 +185,19 @@ export default {
             // TODO: implement decrease point
             this.$router.push("/mindQuestion").catch(() => {});
         },
-        goDetailPage() {
-            this.$router.push("/matchDetail").catch(() => {});
-            // this.$router.push({name: 'MatchDetail', params: {user: this.finalUser, mydata : this.finalMyData}})
+        async goDetailPage(userId) {
+            // fetch user and myData object for finalUser
+            this.finalUser = await fetchUser(userId)
+            this.finalMyData = await fetchMyData(userId)
+
+            this.$router.push({name: 'MatchDetail', params: {user: this.finalUser, mydata : this.finalMyData}})
         },
         getProfile(i){
             return require("@/assets/" + this.people[i].profileFilename)
         }
     },
-    created() {
-        // TODO: assign reponse to people array
+    beforeMount() {
+        // this.people = this.store.aiResult    // assign reponse to people array
     }
 }
 </script>
