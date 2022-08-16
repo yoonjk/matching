@@ -1,5 +1,6 @@
 <template>
-  <v-container class="wrapper">
+  <div class="wrapper">
+    <MenuBar page="MyDataAgree" />
     <div style="margin-left: 15px; margin-right: 15px">
       <h3 style="margin-top: 30px; margin-bottom: 10px; font-size: 16px">
         마이데이터 수집·이용 동의
@@ -35,7 +36,7 @@
             </template>
 
             <v-card>
-              <v-card-title class="text-h5 grey lighten-2"
+              <v-card-title class="grey lighten-2"
                 >"연결고리" 서비스 이용약관</v-card-title
               >
               <v-card-text>
@@ -76,7 +77,7 @@
           <!-- second dialog box -->
           <v-dialog v-model="dialog2" width="500">
             <v-card>
-              <v-card-title class="text-h5 grey lighten-2"
+              <v-card-title class="grey lighten-2"
                 >"연결고리" 인 앱 결제 이용약관</v-card-title
               >
               <v-card-text>
@@ -131,7 +132,7 @@
         >
         <v-btn
           v-else
-          color="#AEAEAE"
+          color="#ced4da"
           plain
           fab
           text
@@ -143,7 +144,7 @@
           id="agreeText"
           v-on:click="displayMyDataAgreeText"
           style="font-size: 16px; margin-left: 20px">
-          마이데이터 수집·이용 동의(필수) >
+          마이데이터 수집·이용 동의 (필수) >
         </h3>
       </div>
 
@@ -161,7 +162,7 @@
         >
         <v-btn
           v-else
-          color="#AEAEAE"
+          color="#ced4da"
           plain
           fab
           text
@@ -173,7 +174,7 @@
           id="agreeText"
           v-on:click="displayInAppPurchaseText"
           style="font-size: 16px; margin-left: 20px">
-          인 앱 결제 동의(필수) >
+          인 앱 결제 동의 (필수) >
         </h3>
       </div>
     </div>
@@ -182,23 +183,28 @@
       <v-btn
         class="white--text"
         block
-        color="#7048e8"
+        text
         v-on:click="goNextPage"
-        style="height: 60px; font-size: 18px"
+        style="height: 60px; font-size: 18px; width:100%; background-color:#845ef7 ;"
+        :disabled="check()"
         >시작</v-btn
       >
-      <v-snackbar v-model="alert" Bottom flat color="red" rounded="pill" :timeout="1500">
+      <!-- <v-snackbar v-model="alert" Bottom flat color="red" rounded="pill" :timeout="1500">
                 <span class="snackText"> 동의 후 진행해주세요</span>
-      </v-snackbar>
+      </v-snackbar> -->
     </div>
-  </v-container>
+  </div>
 </template>
 
 <script>
 
 import { useAppStore } from '../../store/userState'
+import MenuBar from "../MenuBar.vue";
 
 export default {
+  components:{
+    MenuBar
+  }, 
   setup() {
         const store = useAppStore()
         return { store }
@@ -208,7 +214,7 @@ export default {
       dialog: false,
       dialog2: false,
       user: null,
-      alert: false,
+      // alert: false,
       isAgreed: 0,
       isPurchaseAgreed: 0,
     };
@@ -237,13 +243,17 @@ export default {
     },
     goNextPage() {
       if(!this.isAgreed) {
-        this.alert = true;
+        // this.alert = true;
         return;
       }
       else {
         this.store.user.agreeFlag = "Y"
         this.$router.push("/basicInfoList").catch(() => {});
       }
+    },
+    check(){
+      if(!this.isAgreed) return true
+      return false
     }
   }
 };

@@ -1,32 +1,38 @@
 <template>
     <div>
-        <div id="box-retry" style="text-align: center; margin-left: 15px; margin-right: 15px;"> 
-                <v-btn block id="retryBtn" @click="retry" color="#868e96" rounded style="margin-top: 50px">다시하기(500원)</v-btn>
-        </div>
+        <MenuBar page="MindQuestion" />
+        
 
-        <v-container fluid style="margin-top: 30px;">
+        <div fluid style="margin-top: 30px;">
             <v-row dense id="main">
-            <v-col v-for="(person, index) in people.slice(0,1)" :key="index" cols="12" xs="12">
-                <v-card id="mainCard" class="pa-3" outlined v-on:click="goDetailPage(person.userId)" style="border:5px solid #b197fc;" color="#FFFFFF">
-                <div id="percentLabel" style="background-color: #b197fc; " > {{person.fitPercent}}% match  </div>
-                <img id="topImage" :src="getProfile(index)" @click="goDetailPage(person.userId)"/>
-                <v-spacer></v-spacer>
-                <v-card rounded id="nameLabel">{{person.name}}</v-card>
-                </v-card>
-            </v-col>
+                <v-col v-for="(person, index) in people.slice(0,1)" :key="index" cols="12" xs="12">
+                    <v-card id="mainCard"  v-on:click="goDetailPage(person.userId)">
+                        <div id="percentLabel" style="background-color: #b197fc;" >100% 매칭</div>
+                        <div style="display:flex;width:100%;padding:20px;">
+                            <div style="width:60%"><img id="topImage" :src="getProfile(index)" @click="goDetailPage(person.userId)"/></div>
+                            <div style="width:40%">
+                                {{person.name}}
+                                <v-btn></v-btn>
+                            </div>
+                        </div>
+                    </v-card>
+                </v-col>
             </v-row>
            
             <v-row dense id="sub">
             <v-col v-for="(person, index) in people.slice(1)" :key="index" cols="6" xs="6">
-                <v-card id="subCard" class="pa-3" outlined v-on:click="goDetailPage(person.userId)" style=" border:5px solid #b197fc; " color="#FFFFFF">
-                <div id="percentLabel" style="background-color: #b197fc; "> {{person.fitPercent}}% match </div>
+                <v-card id="subCard"  v-on:click="goDetailPage(person.userId)">
+                <div id="percentLabel" style="background-color: #b197fc; ">90% 매칭</div>
                 <img id="bottomImages" :src="getProfile(index)" @click="goDetailPage(person.userId)"/>
-                <v-spacer></v-spacer>
-                <v-card rounded id="nameLabel">{{person.name}}</v-card>
+                <div rounded id="nameLabel">{{person.name}}</div>
                 </v-card>
             </v-col>
             </v-row>
-        </v-container>
+        </div>
+        
+        <div style="text-align: center; margin-bottom:20px;"> 
+            <v-btn text dark rounded id="retryBtn" @click="retry">다시하기 (-500P)</v-btn>
+        </div>
 
     </div>
     
@@ -35,8 +41,12 @@
 <script>
 import { useAppStore } from '../../store/userState'
 import { fetchUser, fetchMyData } from '../../worker/user';
+import MenuBar from "../MenuBar.vue";
 
 export default {
+    components : {
+        MenuBar
+    },
     setup(){
         const store = useAppStore()
         return {store}
@@ -222,8 +232,9 @@ export default {
     align-items: center;
     flex-direction: column;
     color: white;
-    height: 400px;
+    height: 300px;
     border-radius: 20px;
+    border:2px solid #b197fc; 
 }
 
 #subCard {
@@ -235,22 +246,28 @@ export default {
     height: 250px;
     border-radius: 20px;
     margin-bottom: 20px;
+    border:2px solid #b197fc; 
 }
 
 #percentLabel {
-    width: 90%;
+    width: 85%;
+    height:30px;
     display: flex;
     align-items: center;
     justify-content:center; 
     transform: translateY(-50%);
-    border-radius: 0 0 10px 10px;
+    border-radius: 0 0 20px 20px;
     color: white;
+    font-size:20px;
 }
 
 #retryBtn {
-    display : flex;
-    align-items:center;
-    color: white;
+    /* display : flex;
+    align-items:center; */
+    /* margin-top: 50px; */
+    background-color: #7950f2;
+    height:50px;
+    font-size:18px;
 }
 
 #box-user {
@@ -258,29 +275,30 @@ export default {
 }   
 
 #topImage {
-    height: 80%;
-    width: 80%;
+    height: 170px;
+    width: 170px;
     object-fit: cover;
-    border-radius: 20px;
-    margin-bottom: 10px;
+    border-radius: 100%;
+    /* margin-bottom: 10px; */
 }
 
 #bottomImages {
-    height: 80%;
-    width: 80%;
+    height: 150px;
+    width: 150px;
     object-fit: cover;
-    border-radius: 20px;
+    border-radius: 100%;
     margin-bottom: 10px;
 }
 
 #nameLabel {
-    color: white;
-    background-color: #7950f2;
-    width: 90%;
+    /* color: white;
+    background-color: #7950f2; */
+    width: 95%;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 12px;
+    font-size: 20px;
+    font-weight:bold;
 }
 
 

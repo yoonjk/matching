@@ -65,17 +65,18 @@ export default {
     }
   },
   mounted(){
+    console.log(this.contents.userId)
     this.$axios.get(`/user/mydata/${this.contents.userId}`)
     .then((response)=>{
       this.myData = response.data
 
       this.items = {
-      createdDate : this.makeDate(this.contents.createdDate),
-      age : this.myData.age + "세",
-      job : this.contents.job,
-      address : this.myData.address
+        createdDate : this.makeDate(this.contents.createdDate),
+        age : this.myData.age + "세",
+        job : this.contents.job,
+        address : this.myData.address
       }
-      console.log(this.items)
+      console.log("mydata : "+this.items)
     }).catch((err)=>{
       console.log(err.response)
     })
