@@ -8,13 +8,16 @@
                 <v-col v-for="(person, index) in people.slice(0,1)" :key="index" cols="12" xs="12">
                     <v-card id="mainCard"  v-on:click="goDetailPage">
                         <div id="percentLabel" style="background-color: #b197fc;" >100% 매칭</div>
-                        <div style="display:flex;width:100%;padding:20px;">
+                        <div style="display:flex;width:100%;padding-left:20px;">
                             <div style="width:60%"><img id="topImage" :src="getProfile(index)" @click="goDetailPage"/></div>
-                            <div style="width:40%">
-                                {{person.name}}
-                                <v-btn></v-btn>
+                            <div style="width:40%; display:flex; justify-content: center; align-items: center;">
+                            <v-col>
+                                <v-btn rounded large style="font-size:17px;">상세정보</v-btn>
+                                <v-btn rounded large style="margin-top:20px;font-size:17px;">대화요청</v-btn>
+                            </v-col>
                             </div>
                         </div>
+                        <div style="display:flex; align-items:center;"><v-icon large color="#f8d459" class="mr-2">mdi-crown</v-icon><span style="font-size:25px;font-weight:bold;"> {{person.name}} </span><v-icon large color="#f8d459" class="ml-2">mdi-crown</v-icon></div>
                     </v-card>
                 </v-col>
             </v-row>
@@ -60,7 +63,7 @@ export default {
             myDatas: [],
             people: [
                 {
-                    name: "김국은1",
+                    name: "위대한 오랑우탄",
                     age: "20",
                     userId: "1",
                     profileFilename: "w_2419.jpg"
@@ -89,30 +92,7 @@ export default {
                     userId: "5",
                     profileFilename: "w_2427.jpg"
                 },
-                // {
-                //     name: "김국은6",
-                //     age: "25",
-                //     userId: "6",
-                //     profileFilename: "w_2435.jpg"
-                // },
-                // {
-                //     name: "김국은7",
-                //     age: "26",
-                //     userId: "7",
-                //     profileFilename: "w_2437.jpg"
-                // },
-                // {
-                //     name: "김국은8",
-                //     age: "27",
-                //     userId: "8",
-                //     profileFilename: "w_2438.jpg"
-                // },
-                // {
-                //     name: "김국은9",
-                //     age: "28",
-                //     userId: "9",
-                //     profileFilename: "w_2441.jpg"
-                // }
+                
             ]
         }
     },
@@ -198,8 +178,8 @@ export default {
 }   
 
 #topImage {
-    height: 170px;
-    width: 170px;
+    height: 195px;
+    width: 195px;
     object-fit: cover;
     border-radius: 100%;
     /* margin-bottom: 10px; */
