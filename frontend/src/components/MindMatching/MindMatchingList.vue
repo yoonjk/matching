@@ -13,7 +13,7 @@
                             <div style="width:40%; display:flex; justify-content: center; align-items: center;">
                             <v-col>
                                 <v-btn rounded large style="font-size:17px;">상세정보</v-btn>
-                                <v-btn rounded large style="margin-top:20px;font-size:17px;">대화요청</v-btn>
+                                <v-btn rounded large style="margin-top:20px; font-size:17px;">대화요청</v-btn>
                             </v-col>
                             </div>
                         </div>
