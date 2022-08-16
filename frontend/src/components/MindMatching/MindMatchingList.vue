@@ -67,7 +67,7 @@ export default {
     },
     methods: {
         retry() {
-            // TODO: implement decrease point
+            this.store.user.point -= 500  // decrease 500 point
             this.$router.push("/mindQuestion").catch(() => {});
         },
         async goDetailPage(userId) {
