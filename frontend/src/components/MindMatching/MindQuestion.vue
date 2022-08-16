@@ -42,8 +42,15 @@
 </template>
 
 <script>
-import MenuBar from "../MenuBar.vue";
+import { useAppStore } from '../../store/userState'
+import { loadResultFromAI } from '../../worker/user';
+    import MenuBar from "../MenuBar.vue";
+
 export default {
+    setup() {
+        const store = useAppStore();
+        return { store }
+    },
     components : {
         MenuBar
     },
@@ -74,10 +81,10 @@ export default {
         goNextQuestion() {
             this.clickedLeft = false
             this.clickedRight = false
-
             if(this.b >= 3) {
+                // loadResultFromAI("user5")  // get 5 user and myData objects
                 this.loading = true
-                // TODO: call API and get response from AI API
+
                 setTimeout(() => {
                     this.loading = false
                     this.$router.push("/mindMatchingList").catch(() => {});
