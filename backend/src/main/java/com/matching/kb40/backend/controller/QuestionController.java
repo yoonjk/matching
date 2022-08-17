@@ -10,6 +10,7 @@ import java.util.List;
 
 @Slf4j
 @RestController
+@CrossOrigin
 @RequestMapping("/question")
 public class QuestionController {
 
